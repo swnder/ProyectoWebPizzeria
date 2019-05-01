@@ -21,7 +21,7 @@
      <body>
           <div class="container text-center mt-4">
                <a href="forms/clientes_lista.php">
-                    <img src="img/bienvenidos.png" alt="Bienvenidos" class="img-fluid">
+                    <img src="img/fondoAlienPizza.jpg" alt="Bienvenidos" class="img-fluid">
                </a>
           </div>
 
