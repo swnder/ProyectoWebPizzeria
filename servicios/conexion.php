@@ -25,9 +25,10 @@
     //para encriptar  y desencriptar
     function encriptar($cadena){
         //Una clave de codificacion, debe usarse la misma para encriptar y desencriptar
-        $key='abcdef123456()[]{}ghi789';
-        $encrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $cadena, MCRYPT_MODE_CBC, md5(md5($key))));
+        // $key='abcdef123456()[]{}ghi789';
+        // $encrypted = base64_encode(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key), $cadena, MCRYPT_MODE_CBC, md5(md5($key))));
         //Devuelve el string encriptado
+        $encrypted = md5($cadena);
         return $encrypted;
     }
 

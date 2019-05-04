@@ -8,20 +8,19 @@ session_start();
 //recibo los datos
 $nombre = $_POST['loginname'];
 $contrasena = encriptar($_POST['password']);
+// $contrasena = $_POST['password'];
 
 if ($nombre == null || $nombre == "") {
         echo "No está autorizado para acceder al sistema!!...";
 }else {
     $conexion = conexion();
-    alert("holis");
-    $sql = "SELECT * FROM usuario WHERE usuario LIKE '".$nombre."' AND pass LIKE '".$contrasena."'";
+    $sql = "SELECT * FROM usuario WHERE usuario ='".$nombre."' AND pass =  '".$contrasena."'";
     $resultado = mysqli_query($conexion, $sql);
     $totRegistros = mysqli_num_rows($resultado);
 
     if ($totRegistros == 0){
         $_SESSION["usuarioValido"] = "no"; //Usuario o contraseña no valido
     }else{
-      alert("holi");
         foreach ($resultado as $row) {
             $id       = $row['id'];
             $nombre   = $row['usuario'];

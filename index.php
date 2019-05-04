@@ -13,10 +13,12 @@
           <link rel="stylesheet" href="alertify/alertify.min.css">
           <!-- Bootstrap -->
           <link rel="stylesheet" href="bt/bootstrap.min.css">
+          <link rel="stylesheet" href="bt/mdb.css">
           <!-- JS REQUERIDOS -->
           <!-- JQuery -->
           <script src="js/jquery-3.3.1.min.js"></script>
           <script src="js/bootstrap.js"></script>
+          <script src="bt/mdb.min.js"></script>
           <script src="js/toastr.js"></script>
           <script src="alertify/alertify.min.js">
 
@@ -39,39 +41,40 @@
                       alertify.error("Usuario o contraseña incorrecto!!!", "Mensaje del sistema");
                   }else if (usuValido == "si"){
                       if(usuNivel == "Administrador"){
+                        alertify.warning("Usuario logeado Exitosamente!!!");
                         //redirecciona a la pagina despues del login
-                          window.location="prueba.html";
+                          window.location="menuAdmin.php";
                       }
                   }
               });
           </script>
         <div id="panelAcceso" class="card text-center bg-dark">
             <div class="card-header">
-              <h1 id="titulo" class="card-title text-white">Acceso al Sitio Web</h1>
+              <img class"card-img" id="logo" src="img/pizza.png" alt="logo"/>
+                <div class="card-img-overlay">
+                  <h3 id="titulo" class="card-title text-success font-weight-bolder">Acceso al Sitio Web</h3>
+                </div>
             </div>
                 <div class="card-body">
                   <form id="formAcceso" method="post" action="servicios/validarAcceso.php">
-                      <div class="row">
-                          <div class="col-md-12" style="text-align:center;">
-                              <img id="logo" src="img/pizza.png" alt="logo"/>
-                          </div>
-                      </div>
-                      <div class="row">
-                          <div class="col-sm-12">
-                              <div class="form-group row">
-                                  <div class="col-md-12">
 
-                                      <input class="form-control" placeholder="Usuario" id="loginname" name="loginname" type="text" autofocus>
-                                  </div>
-                              </div>
+                      <!-- usuario -->
+                      <div class="row">
+                        <div class="col-md-12 mb-3">
+                            <input class="form-control" id="loginname" name="loginname" type="text" placeholder="Usuario" autofocus>
+                          </div>
+
+                      </div>
+                      <!-- password -->
+                      <div class="row">
+                          <div class="col-sm-12 ">
                               <div class="form-group row">
                                   <div class="col-md-12">
                 							        <input class="form-control" placeholder="Contraseña" id="password" name="password" type="password" value="" onkeypress="enter(event)">
                                         </div>
                                     </div>
-                              <div class="form-group">
-                                  <button type="button" onclick="validarCampos();" id="botonIngresar" class="btn btn-lg btn-primary btn-block">Ingresar
-                                  </button>
+                      <div class="form-group">
+                        <button type="button" onclick="validarCampos();"      id="botonIngresar" class="btn btn-lg btn-warning btn-block">Ingresar</button>
                               </div>
                           </div>
                       </div>
