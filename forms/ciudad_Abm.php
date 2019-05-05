@@ -7,6 +7,7 @@
           <link rel="icon" href="../img/ciudad.ico"/>
 
           <!-- CSS REQUERIDOS -->
+          <link rel="stylesheet" href="../css/misestilos1.css">
           <!-- Bootstrap -->
           <link rel="stylesheet" href="../bt/bootstrap.min.css">
           <!-- Datatables -->
@@ -41,7 +42,10 @@
           ?>
      </head>
 
-     <body class="bg-dark text-white">
+     <body class="bg-dark text-white " style="
+           background: url('../img/pizza2.jpg') no-repeat fixed center;
+           background-size: cover;
+           font-family: 'Roboto',Sans-Serif;">
           <?php
                if (isset($_GET['id'])){ //Solo para modificar
                     require_once("../servicios/conexion.php");
@@ -52,7 +56,7 @@
      			$reg = mysqli_fetch_array($res);
      		}
      	?>
-          <div class="container">
+          <div class="container gris">
                <h2 class="text-center mt-3" id="titulo"></h2>
                <div class="row" style="background: rgba(0, 0, 0, 0.99);">
                     <div class="col">
@@ -109,7 +113,7 @@
      					</div>
                               <input type="hidden" name="accion" id="accion">
                               <input type="hidden" name="id" id="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>">
-                              <input type="hidden" name="depar" id="depar" value="<?php echo isset($reg['departamento']) ? $reg['departamento'] : '';?>">
+
                          </form>
                     </div>
                </div>
@@ -143,11 +147,11 @@
                          type: "POST",
                          dataType: 'html',
                          url: "../servicios/CiudadServicios.php",
-                         data: "ciudad=" + ciu + "&departamento=" + depar + "&accion=" + acc,
+                         data: "ciudad=" + ciu + "&depar=" + depar + "&accion=" + acc,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 1){
-                              alertify.warning("El R.U.C. ingresado ya existe. Cambie por otro");
-                              $("#ruc").focus();
+                              alertify.warning("La ciudad ya existe. Cambie por otro");
+                              $("#ciudad").focus();
                          }else if (resp == 2){
                               alertify.success("Registro guardado con éxito");
                               limpiarCampos();
@@ -158,19 +162,19 @@
                }
 
                function limpiarCampos(){
-                    $("#ciu").val("");
+                    $("#ciudad").val("");
                     $("#depar").val("");
-                    $("#ciu").focus();
+                    $("#ciudad").focus();
                }
 
                function validarCampos(){
-                  alertify.info("hola");
-                     if ($("#ciu").val().length < 5){
-                         alertify.error("Ingrese como mínimo 5 caracteres en Razón Social");
-                         $("#razon").focus();
+
+                     if ($("#ciudad").val().length < 5){
+                         alertify.error("Ingrese como mínimo 5 caracteres la Ciudad");
+                         $("#ciudad").focus();
                     }else if ($("#depar").val() == ""){
-                         alertify.error("Seleccione el Tipo de cliente");
-                         $("#tipo").focus();
+                         alertify.error("Seleccione el un Departamento");
+                         $("#depar").focus();
                     }else{
                          if ($("#accion").val() == "N"){
                               registrar();
@@ -178,7 +182,7 @@
                               actualizar();
                          }
                     }
-               }
+               }// fin validarCampos
 
                function cancelar(){
                     alertify.confirm("Confirmación", "¿Desea cancelar la carga de datos y limpiar los campos?",
@@ -215,7 +219,7 @@
                }
 
                function actualizar(){
-                    ciu = $("#ciu").val();
+                    ciu = $("#ciudad").val();
                     depar = $("#depar").val();
                     acc = $("#accion").val();
                     id  = $("#id").val();
@@ -223,11 +227,11 @@
                          type: "POST",
                          dataType: 'html',
                          url: "../servicios/CiudadServicios.php",
-                         data: "ciu=" + ciu + "&depar=" + depar + "&accion=" + acc  + "&id=" + id,
+                         data: "ciudad=" + ciu + "&depar=" + depar + "&accion=" + acc  + "&id=" + id,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 3){
-                              alertify.warning("El R.U.C. pertenece a otro cliente. Cambie por otro");
-                              $("#ruc").focus();
+                              alertify.warning("La ciudad ya existe. Cambie por otro");
+                              $("#depar").focus();
                          }else if (resp == 4){
                               alertify.alert("Modificar", "Registro actualizado con éxito",
                                    function(){

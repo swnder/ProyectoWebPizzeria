@@ -144,7 +144,7 @@
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
           <a class="dropdown-item" href="#"><i class="fa fa-keycdn"> Cambiar Contraseña</i> </a>
-          <a class="dropdown-item" href="cerrarsesion.php"> <i class="fa fa-sign-out-alt"> Cerrar Sesión</i></a>
+          <a class="dropdown-item" href="../cerrarsesion.php"> <i class="fa fa-sign-out-alt"> Cerrar Sesión</i></a>
                   </div>
       </li>
     </ul>
@@ -204,7 +204,7 @@
       					"loadingRecords":		"Cargando...",
       					"processing":			"Procesando...",
       					"search":				"Buscar:",
-      					"searchPlaceholder":	"Dato para buscar",
+      					"searchPlaceholder":	" Dato para buscar",
       					"zeroRecords":			"No se han encontrado coincidencias.",
       					"paginate": {
       						"first":			"Primera",
@@ -317,7 +317,7 @@
         <footer class="page-footer gris font-small mt-4">
 
           <!-- Copyright -->
-          <div class="footer-copyright text-center py-3">© 2018 Copyright:
+          <div class="footer-copyright text-center py-3">© 2019 Copyright:
             <a href=""> Sandro Castillo</a>
           </div>
           <!-- Copyright -->

@@ -92,3 +92,9 @@ border-top: 1px solid #eee;
 }
 #tabla{
   background: rgba(19, 154, 117, 0.89)!important;
+}
+.body{
+  background: url('../img/pizza2.jpg') no-repeat fixed center;
+  background-size: cover;
+  font-family: 'Roboto',Sans-Serif;"
+}

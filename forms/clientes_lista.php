@@ -94,7 +94,7 @@
      					"loadingRecords":		"Cargando...",
      					"processing":			"Procesando...",
      					"search":				"Buscar:",
-     					"searchPlaceholder":	"Dato para buscar",
+     					"searchPlaceholder":	" Dato para buscar",
      					"zeroRecords":			"No se han encontrado coincidencias.",
      					"paginate": {
      						"first":			"Primera",
@@ -108,7 +108,7 @@
      					}
           }, // fin de language
             lengthMenu:				[[5, 10, 20, 50, -1], [5, 10, 20, 50, "Todos"]],
-				    iDisplayLength:			5,
+				    // iDisplayLength:			5,
                          //dom: 'lBf',
                          dom: 'Bfrtip',
                          //botones
