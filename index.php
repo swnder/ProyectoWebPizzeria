@@ -26,9 +26,19 @@
           <!-- Boostrap -->
           <script src="bt/bootstrap.min.js"></script>
 
+<style media="screen">
+.gris{
+  background: rgba(19, 154, 117, 0.89);
+
+}
+#panelAcceso{
+  background: rgba(19, 154, 117, 0.89)!important;
+}
+</style>
+
      </head>
      <body style="
-        background: url('img/fondoAlienPizza.jpg') no-repeat fixed center;
+        background: url('img/Pizza2.jpg') no-repeat fixed center;
         background-size: cover;
         font-family: 'Roboto',Sans-Serif;">
 
@@ -61,6 +71,7 @@
                       <!-- usuario -->
                       <div class="row">
                         <div class="col-md-12 mb-3">
+                          <span class=""><i class="fa fa-user"></i></span>
                             <input class="form-control" id="loginname" name="loginname" type="text" placeholder="Usuario" autofocus>
                           </div>
 
@@ -74,7 +85,7 @@
                                         </div>
                                     </div>
                       <div class="form-group">
-                        <button type="button" onclick="validarCampos();"      id="botonIngresar" class="btn btn-lg btn-warning btn-block">Ingresar</button>
+                        <button type="button" onclick="validarCampos();"      id="botonIngresar" class="btn btn-lg btn-success btn-block">Ingresar</button>
                               </div>
                           </div>
                       </div>
