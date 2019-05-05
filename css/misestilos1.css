@@ -86,3 +86,9 @@ border-top: 1px solid #eee;
     background: rgba(19, 154, 117, 0.89);
 
   }
+ #tbody{
+  text: black;
+
+}
+#tabla{
+  background: rgba(19, 154, 117, 0.89)!important;

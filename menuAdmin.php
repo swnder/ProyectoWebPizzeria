@@ -27,7 +27,7 @@
     <style media="screen">
       .gris{
         background: rgba(19, 154, 117, 0.89);
-        
+
       }
       .top-nav-collapse{
         background: rgba(19, 154, 117, 0.89)!important;
@@ -107,10 +107,11 @@
         <!-- menu desplegable lado derecho -->
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="#">Ciudad</a>
-          <a class="dropdown-item" href="cerrarsesion.php">Mesas</a>
-          <a class="dropdown-item" href="cerrarsesion.php">Categorias</a>
-          <a class="dropdown-item" href="cerrarsesion.php">Empleados</a>
+          <a class="dropdown-item" href="forms/ciudadlista.php"><i class="fa fa-city"> Ciudad</i></a>
+          <a class="dropdown-item" href="#"> <i class="fa fa-table"> Mesas</i></a>
+          <a class="dropdown-item" href="#"> <i class="fa fa-star"> Categoria</i></a>
+          <a class="dropdown-item" href="#"><i class="fa fa-user-tie"> Empleados</i></a>
+          <a class="dropdown-item" href="../forms/usuario_lista.php"><i class="fa fa-user"> Usuarios</i></a>
 
 
 
@@ -125,8 +126,8 @@
         <!-- menu desplegable lado derecho -->
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="#">Cambiar Contraseña</a>
-          <a class="dropdown-item" href="cerrarsesion.php">Cerrar Sesión</a>
+          <a class="dropdown-item" href="#"><i class="fa fa-keycdn"> Cambiar Contraseña</i> </a>
+          <a class="dropdown-item" href="cerrarsesion.php"> <i class="fa fa-sign-out-alt"> Cerrar Sesión</i></a>
                   </div>
       </li>
     </ul>
@@ -148,7 +149,7 @@
 
           <!-- Copyright -->
           <div class="footer-copyright text-center py-3">© 2018 Copyright:
-            <a href="https://mdbootstrap.com/bootstrap-tutorial/"> MDBootstrap.com</a>
+            <a href="#"> Sandro Castillo</a>
           </div>
           <!-- Copyright -->
 

@@ -62,7 +62,7 @@
             <div class="card-header">
               <img class"card-img" id="logo" src="img/pizza.png" alt="logo"/>
                 <div class="card-img-overlay">
-                  <h3 id="titulo" class="card-title text-success font-weight-bolder">Acceso al Sitio Web</h3>
+                  <h3 id="titulo" class="card-title text-white font-weight-bolder">Acceso al Sitio Web</h3>
                 </div>
             </div>
                 <div class="card-body">
@@ -85,7 +85,7 @@
                                         </div>
                                     </div>
                       <div class="form-group">
-                        <button type="button" onclick="validarCampos();"      id="botonIngresar" class="btn btn-lg btn-success btn-block">Ingresar</button>
+                        <button type="button" onclick="validarCampos();"      id="botonIngresar" class="btn btn-lg btn-ligth btn-block">Ingresar</button>
                               </div>
                           </div>
                       </div>
