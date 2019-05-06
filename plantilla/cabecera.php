@@ -1,7 +1,7 @@
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark gris scl scrolling-navbar fixed-top">
 
 <div class="container">
-  <a class="navbar-brand" href="menuAdmin.php"><img src="img/pizza.png" height="30" class="d-inline-block align-top" alt="">Pizzeria</a>
+  <a class="navbar-brand" href="/ProyectoWebPizzeria/menuAdmin.php"><img src="/ProyectoWebPizzeria/img/pizza.png" height="30" class="d-inline-block align-top" alt="">Pizzeria</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
     aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -56,11 +56,11 @@
         <!-- menu desplegable lado derecho -->
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="forms/ciudadlista.php"><i class="fa fa-city"> Ciudad</i></a>
-          <a class="dropdown-item" href="#"> <i class="fa fa-table"> Mesas</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/ciudadlista.php"><i class="fa fa-city"> Ciudad</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/mesas_lista.php"> <i class="fa fa-table"> Mesas</i></a>
           <a class="dropdown-item" href="#"> <i class="fa fa-star"> Categoria</i></a>
           <a class="dropdown-item" href="#"><i class="fa fa-user-tie"> Empleados</i></a>
-          <a class="dropdown-item" href="forms/usuarios_lista.php"><i class="fa fa-user"> Usuarios</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/usuarios_lista.php"><i class="fa fa-user"> Usuarios</i></a>
         </div>
       </li>
       <li class="nav-item dropdown">

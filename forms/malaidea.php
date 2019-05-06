@@ -34,7 +34,7 @@
                      $("#segundos").html("En " + seg + " segundos será redirigido...");
                    },
                    function() {
-                       location.href="clientes_lista.php";
+                       location.href="../index_lista.php";
                    }
                );
 

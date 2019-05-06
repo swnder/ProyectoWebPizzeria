@@ -106,7 +106,7 @@
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
           <a class="dropdown-item" href="forms/ciudadlista.php"><i class="fa fa-city"> Ciudad</i></a>
-          <a class="dropdown-item" href="#"> <i class="fa fa-table"> Mesas</i></a>
+          <a class="dropdown-item" href="forms/mesas_lista.php"> <i class="fa fa-table"> Mesas</i></a>
           <a class="dropdown-item" href="#"> <i class="fa fa-star"> Categoria</i></a>
           <a class="dropdown-item" href="#"><i class="fa fa-user-tie"> Empleados</i></a>
           <a class="dropdown-item" href="forms/usuarios_lista.php"><i class="fa fa-user"> Usuarios</i></a>

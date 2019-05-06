@@ -6,21 +6,23 @@
     <meta name="theme-color" content="black">
     <title>Sistema Pizzeria/Lista_Ciudad</title>
     <link rel="icon" href="../img/pizzeria.ico"/>
-    <link rel="stylesheet" href="../css/master.css">
     <!-- CSS REQUERIDOS -->
     <link rel="stylesheet" href="../css/misestilos1.css">
     <link rel="stylesheet" href="../alertify/alertify.min.css">
     <!-- Bootstrap -->
     <link rel="stylesheet" href="../bt/bootstrap.min.css">
     <link rel="stylesheet" href="../bt/mdb.css">
+    <!-- Datatables -->
+    <link rel="stylesheet" href="../dt/datatables.min.css">
+    <!-- Alertify -->
+    <link rel="stylesheet" href="../alertify/alertify.min.css">
+    <link rel="stylesheet" href="../alertify/default.min.css">
+    <!-- Font-Awesome -->
     <link rel="stylesheet" href="../font-awesome/font-awesome.min.css">
+
     <!-- JS REQUERIDOS -->
     <!-- JQuery -->
     <script src="../js/jquery-3.3.1.min.js"></script>
-    <script src="../js/bootstrap.js"></script>
-    <script src="../bt/mdb.min.js"></script>
-      <script src="../alertify/alertify.min.js"></script>
-    <script src="../js/MaterialDesign.js"></script>
     <!-- Boostrap -->
     <script src="../bt/bootstrap.min.js"></script>
     <!-- Datatables -->
@@ -32,25 +34,9 @@
     <script src="../dt/botones/buttons.print.min.js"></script>
     <script src="../dt/botones/pdfmake.min.js"></script>
     <script src="../dt/botones/vfs_fonts.js"></script>
+    <!-- Alertify -->
+    <script src="../alertify/alertify.min.js"></script>
 
-
-
-
-    <style media="screen">
-      .gris{
-        background: rgba(19, 154, 117, 0.89);
-
-      }
-      .top-nav-collapse{
-        background: rgba(19, 154, 117, 0.89)!important;
-      }
-      #tabla{
-        background: rgba(19, 154, 117, 0.89)!important;
-      }
-    </style>
-
-
-    <title>Ajuste Ciudad</title>
   </head>
   <!-- <body class="fixed-sn light-blue-skin" style="
         background: url('img/pizza2.jpg') no-repeat fixed center;
@@ -64,6 +50,7 @@
 
 
        <!--Navbar -->
+
 <nav class="mb-1 navbar navbar-expand-lg navbar-dark gris scl scrolling-navbar fixed-top">
 
 <div class="container">
@@ -129,10 +116,6 @@
           <a class="dropdown-item" href="#"><i class="fa fa-user-tie"> Empleados</i></a>
           <a class="dropdown-item" href="../forms/usuarios_lista.php"><i class="fa fa-user"> Usuarios</i></a>
 
-
-
-
-
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -156,11 +139,11 @@
 </nav>
   <!-- tabla de la vista -->
  <br><br><br>
- <div class="container bg-dark mt-5" id="tabla">
+  <div class="container bg-dark mt-5" id="tabla">
       <div class="table-responsive" >
 
            <h1 class="text-center mt-5"></h1>
-           <table class="table table-bordered display nowrap stripe" id="tablaCiudad" style="width:100%">
+           <table class="table table-bordered display nowrap stripe"  id="tablaCiudad" style="width:100%">
                 <thead>
                      <tr>
                           <th hidden>ID</th>
@@ -189,7 +172,7 @@
                      ?>
                 </tbody>
            </table>
-   </div>
+         </div>
    </div>
            <script>
                 $(document).ready(function() {
@@ -228,6 +211,7 @@
                                // 'print',
                                {extend: 'print',
                                  name:'pdfBtn',
+                                 className:'btn gris',
                                  text: "<i class='fa fa-print'> Imprimir</i>",
                                  titleAttr: 'Imprimir todo el documento',
                                  customize: function ( win ) {
@@ -242,6 +226,7 @@
 
                                {text:"<i class ='fa fa-plus-circle'> Nuevo</i>",
                                  name:"nuevoBtn",
+                                 className:"btn gris",
                                  titleAttr:'Cargar nuevo Registro', action: function (e, dt, node, config){
                       		     window.location="ciudad_Abm.php?accion=N";
                        		}},
@@ -310,22 +295,9 @@
                 }
            </script>
 
-</div>
 
-
-
-</div>
         <!-- Footer -->
-
-        <footer class="page-footer gris font-small mt-4">
-
-          <!-- Copyright -->
-          <div class="footer-copyright text-center py-3">© 2019 Copyright:
-            <a href=""> Sandro Castillo</a>
-          </div>
-          <!-- Copyright -->
-
-        </footer>
+        <?php require_once "pantilla/footer.php" ?>
         <!-- Footer -->
 
       </body>

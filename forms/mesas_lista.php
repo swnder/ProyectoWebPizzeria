@@ -6,140 +6,28 @@
           <meta name="theme-color" content="black">
           <link rel="icon" href="../img/mozo.ico"/>
 
-          <!-- CSS REQUERIDOS -->
-          <link rel="stylesheet" href="../css/misestilos1.css">
-          <link rel="stylesheet" href="../alertify/alertify.min.css">
-          <!-- Bootstrap -->
-          <link rel="stylesheet" href="../bt/bootstrap.min.css">
-          <link rel="stylesheet" href="../bt/mdb.css">
-          <!-- Datatables -->
-          <link rel="stylesheet" href="../dt/datatables.min.css">
-          <!-- Alertify -->
-          <link rel="stylesheet" href="../alertify/alertify.min.css">
-          <link rel="stylesheet" href="../alertify/default.min.css">
-          <!-- Font-Awesome -->
-          <link rel="stylesheet" href="../font-awesome/font-awesome.min.css">
-
-          <!-- JS REQUERIDOS -->
-          <!-- JQuery -->
-          <script src="../js/jquery-3.3.1.min.js"></script>
-          <!-- Boostrap -->
-          <script src="../bt/bootstrap.min.js"></script>
-          <!-- Datatables -->
-          <script src="../dt/datatables.min.js"></script>
-          <!-- Datatables Botones-->
-          <script src="../dt/botones/dataTables.buttons.min.js"></script>
-          <script src="../dt/botones/buttons.html5.min.js"></script>
-          <script src="../dt/botones/jszip.min.js"></script>
-          <script src="../dt/botones/buttons.print.min.js"></script>
-          <script src="../dt/botones/pdfmake.min.js"></script>
-          <script src="../dt/botones/vfs_fonts.js"></script>
-          <!-- Alertify -->
-          <script src="../alertify/alertify.min.js"></script>
-          <title>Usuarios/Pizzeria</title>
-
+          <?php require_once "../plantilla/linktablas.php";?>
 
 
      </head>
      <body >
-       <!-- cabecera -->
-       <nav class="mb-1 navbar navbar-expand-lg navbar-dark gris scl scrolling-navbar fixed-top">
-               <div class="container">
-         <a class="navbar-brand" href="../menuAdmin.php"><img src="../img/pizza.png" height="30" class="d-inline-block align-top" alt="">Lista de Usuarios</a>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-333"
-           aria-controls="navbarSupportedContent-333" aria-expanded="false" aria-label="Toggle navigation">
-           <span class="navbar-toggler-icon"></span>
-         </button>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent-333">
-           <ul class="navbar-nav mr-auto">
-             <li class="nav-item active">
-               <a class="nav-link" href="#">Facturar
-                 <span class="sr-only">(current)</span>
-               </a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link" href="#">Compra</a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link" href="#">Productos</a>
-             </li>
-             <!-- clientes despelcagle -->
-             <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">Clientes
-               </a>
-               <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                 <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_am.php?accion=N"><i class="fa fa-plus-circle"> Agregar</i> </a>
-                 <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_am.php?accion=M"><i class="fa fa-edit"> Modificar</i></a>
-                 <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_lista.php"><i class="fa fa-list-ol"> Lista Clientes</i></a>
-               </div>
-             </li>
-               <!-- caja despelgable -->
-             <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">Caja
-               </a>
-               <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-                 <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_am.php?accion=N"><i class="fa fa-plus-circle"> Apertura de Caja</i> </a>
-                 <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_am.php?accion=M"><i class="fa fa-times-circle"> Cierre de Caja</i></a>
-                 <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_lista.php"><i class="fa fa-list-ol"> Lista Movimiento</i></a>
-               </div>
-             </li>
-           </ul>
-           <ul class="navbar-nav ml-auto nav-flex-icons">
-             <li class="nav-item">
-               <a class="nav-link waves-effect waves-light">
-                 <i class="fa fa-twitter"> Contacto</i>
-               </a>
-             </li>
-             <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                 <i class="fa fa-cog"> Ajustes</i>
-               </a>
-               <!-- menu desplegable lado derecho -->
-               <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                 aria-labelledby="navbarDropdownMenuLink-333">
-                 <a class="dropdown-item" href="../forms/ciudadlista.php"><i class="fa fa-city"> Ciudad</i></a>
-                 <a class="dropdown-item" href="#"> <i class="fa fa-table"> Mesas</i></a>
-                 <a class="dropdown-item" href="#"> <i class="fa fa-star"> Categoriaa</i></a>
-                 <a class="dropdown-item" href="#"><i class="fa fa-user-tie"> Empleados</i></a>
-                   <a class="dropdown-item" href="../forms/usuarios_lista.php"><i class="fa fa-user"> Usuarios</i></a>
-               </div>
-             </li>
-             <li class="nav-item dropdown">
-               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-333" data-toggle="dropdown"
-                 aria-haspopup="true" aria-expanded="false">
-                 <i class="fa fa-user"> Cuenta</i>
-               </a>
-               <!-- menu desplegable lado derecho -->
-               <div class="dropdown-menu dropdown-menu-right dropdown-default"
-                 aria-labelledby="navbarDropdownMenuLink-333">
-                 <a class="dropdown-item" href="#"><i class="fa fa-keycdn"> Cambiar Contraseña</i> </a>
-                 <a class="dropdown-item" href="../cerrarsesion.php"> <i class="fa fa-sign-out-alt"> Cerrar Sesión</i></a>
-                         </div>
-             </li>
-           </ul>
-         </div>
-
-
-          </div>
-
-       </nav>
-<!-- nav bar -->
+     <!-- cabecera -->
+      <?php require_once "../plantilla/cabecera.php" ?>
 
 <!-- datatable -->
 <br><br><br>
           <div class="container bg-dark mt-5" id="tabla">
                <div class="table-responsive">
-                     <h2 class="text-center mt-3"></h2>
-                    <table class="table table-bordered display nowrap stripe" id="tablaUsuario" style="width:100%">
+                 <!-- cabecera de la tabla -->
+                 asldkfaksasdfasdasdfa
+                    <h2 class="text-center mt-3">LISTA DE MESA</h2>
+                    <table class="table table-bordered display nowrap stripe" id="tablaMesa" style="width:100%">
                          <thead>
                               <tr>
                                    <th hidden>ID</th>
-                                   <th>USUARIO</th>
-                                   <th>CONTRASEÑA</th>
-                                   <th>NIVEL</th>
+                                   <th>DESCRIPCION</th>
+                                   <th>UBICACIÓN</th>
+                                   <th>SILLAS</th>
                                    <!-- <th>TELÉFONO</th> -->
                                    <!-- <th>MÓVIL</th> -->
                                    <!-- <th>TIPO CLIENTE</th> -->
@@ -152,14 +40,14 @@
                                 require_once("../servicios/conexion.php");
                                 $conex = conexion();
                                 // sentencia sql
-                                $sql = "SELECT * FROM usuario ORDER BY id";
+                                $sql = "SELECT * FROM mesa ORDER BY id";
                                 $rs = mysqli_query($conex, $sql);
                                 foreach ($rs as $fila) {
                                      echo "<tr>";
                                           echo "<td hidden>".$fila['id']."</td>";
-                                          echo "<td>".$fila['usuario']."</td>";
-                                          echo "<td>".$fila['pass']."</td>";
-                                          echo "<td>".$fila['nivel']."</td>";
+                                          echo "<td>".$fila['descripcion']."</td>";
+                                          echo "<td>".$fila['ubicacion']."</td>";
+                                          echo "<td>".$fila['sillas']."</td>";
                                           echo "<td class='text-center' style='cursor:pointer' onclick='obtenerIdModi()'><i class='fa fa-pencil'></i></td>";
                                           echo "<td class='text-center' style='cursor:pointer' onclick='obtenerIdEli()'><i class='fa fa-trash-o'></i></td>";
                                      echo "</tr>";
@@ -174,7 +62,7 @@
 
           <script>
                $(document).ready(function() {
-                    $('#tablaUsuario').DataTable( {
+                    $('#tablaMesa').DataTable( {
                          language: {
      					"emptyTable":			"No hay datos disponibles en la tabla.",
      					"info":		   		"Del _START_ al _END_ de _TOTAL_ ",
@@ -254,7 +142,7 @@
                                 name:"nuevoBtn",
                                 className:"btn gris",
                                 titleAttr:'Cargar nuevo Registro', action: function (e, dt, node, config){
-                     		     window.location="usuarios_Abm.php?accion=N";
+                     		     window.location="mesas_Abm.php?accion=N";
                       		}}
                         ] // fin de los botones
                     } );
@@ -264,7 +152,7 @@
                     //Capturar idCliente de la fila donde se hizo clic
                     var fi=0;
                     var id=0;
-                    var tabla = document.getElementById("tablaUsuario");
+                    var tabla = document.getElementById("tablaMesa");
                     var filas = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
                     for (i=0; i<filas.length; i++) {
                          filas[i].onclick = function() {
@@ -276,7 +164,7 @@
                     alertify.confirm().set("labels", {ok:"SI", cancel:"NO"});
                     alertify.confirm().set("defaultFocus", "cancel");
                     alertify.dialog("confirm").set({transition:"flipx"});
-                    alertify.confirm("Eliminar registro", "¿Desea eliminar el registro del Usuario?",
+                    alertify.confirm("Eliminar registro", "¿Desea eliminar el registro del descripcion?",
                          function(){ //SI
                               eliminar(id);
                          },
@@ -290,11 +178,11 @@
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
-                         url: "../servicios/UsuariosServicios.php",
+                         url: "../servicios/MesasServicios.php",
                          data: "id=" + id + "&accion=E",
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 5){
-                              alertify.alert("Atención", "El registro del usuario fue Eliminado",
+                              alertify.alert("Atención", "El registro de la mesa fue Eliminado",
                                    function(){
                                         location.reload();
                                    }
@@ -308,14 +196,14 @@
                function obtenerIdModi(){
                     var fi=0;
                     var id=0;
-                    var tabla = document.getElementById("tablaUsuario");
+                    var tabla = document.getElementById("tablaMesa");
                     var filas = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
                     for (i=0; i<filas.length; i++) {
                          filas[i].onclick = function() {
                               //Obtener el id (columna oculta)
                               fi = this.rowIndex;
                               id = tabla.rows[fi].cells[0].innerHTML;
-                              window.location="usuarios_Abm.php?accion=M&id="+id;
+                              window.location="mesas_Abm.php?accion=M&id="+id;
                          }
                     }
                }

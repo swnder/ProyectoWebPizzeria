@@ -1,20 +1,3 @@
-toastr.options = {
-  "closeButton": true,
-  "debug": false,
-  "newestOnTop": false,
-  "progressBar": false,
-  "positionClass": "toast-bottom-full-width",
-  "preventDuplicates": true,
-  "onclick": null,
-  "showDuration": "300",
-  "hideDuration": "500",
-  "timeOut": "3000",
-  "extendedTimeOut": "500",
-  "showEasing": "swing",
-  "hideEasing": "linear",
-  "showMethod": "fadeIn",
-  "hideMethod": "hide"
-};
 //--------------------------------------------------------------------------
 //Toma todas las variables de url y las carga en un array
 //Almacena el nombre de cada variable con su valor
