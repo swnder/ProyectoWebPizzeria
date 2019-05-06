@@ -127,7 +127,7 @@
           <a class="dropdown-item" href="#"> <i class="fa fa-table"> Mesas</i></a>
           <a class="dropdown-item" href="#"> <i class="fa fa-star"> Categoriaa</i></a>
           <a class="dropdown-item" href="#"><i class="fa fa-user-tie"> Empleados</i></a>
-          <a class="dropdown-item" href="../forms/usuario_lista.php"><i class="fa fa-user"> Usuarios</i></a>
+          <a class="dropdown-item" href="../forms/usuarios_lista.php"><i class="fa fa-user"> Usuarios</i></a>
 
 
 
@@ -156,10 +156,10 @@
 </nav>
   <!-- tabla de la vista -->
  <br><br><br>
- <div class="container bg-dark mt-" id="tabla">
+ <div class="container bg-dark mt-5" id="tabla">
       <div class="table-responsive" >
 
-           <!-- <h1 class="text-center mt-5">Ciudad</h1> -->
+           <h1 class="text-center mt-5"></h1>
            <table class="table table-bordered display nowrap stripe" id="tablaCiudad" style="width:100%">
                 <thead>
                      <tr>
@@ -220,8 +220,11 @@
              lengthMenu:				[[5, 10, 20, 50, -1], [5, 10, 20, 50, "Todos"]],
  				    iDisplayLength:			5,
                           //dom: 'lBf',
-                          dom: 'Bfrtip',
+                          dom:'Bftipr',
                             buttons:[
+                              // 'copyHtml5',
+                              // 'excelHtml5',
+                              // 'csvHtml5',
                                // 'print',
                                {extend: 'print',
                                  name:'pdfBtn',
@@ -241,8 +244,8 @@
                                  name:"nuevoBtn",
                                  titleAttr:'Cargar nuevo Registro', action: function (e, dt, node, config){
                       		     window.location="ciudad_Abm.php?accion=N";
-                       		}}
-                         ] // fin de los botones
+                       		}},
+                        ] // fin de los botones
                      } );
                 } );
 
