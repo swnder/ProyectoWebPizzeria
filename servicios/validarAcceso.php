@@ -6,7 +6,7 @@ session_destroy();                  //Destruye la informacion de la session actu
 session_start();
 
 //recibo los datos
-$nombre = $_POST['loginname'];
+$nombre = strtoupper($_POST['loginname']);
 $contrasena = encriptar($_POST['password']);
 // $contrasena = $_POST['password'];
 

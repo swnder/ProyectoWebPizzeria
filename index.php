@@ -49,10 +49,12 @@
                   if(usuValido == 'no'){
                       alertify.error("Usuario o contraseña incorrecto!!!", "Mensaje del sistema");
                   }else if (usuValido == "si"){
-                      if(usuNivel == "Administrador"){
+                      if(usuNivel == "ADMINISTRADOR"){
                         alertify.warning("Usuario logeado Exitosamente!!!");
                         //redirecciona a la pagina despues del login
-                          window.location="menuAdmin.php";
+                          window.location="./menuAdmin.php";
+                      }else{
+                        window.location="./AccesoDenegado.php";
                       }
                   }
               });

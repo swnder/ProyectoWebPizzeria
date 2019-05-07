@@ -65,14 +65,14 @@
 
                                    <div class="col-12 col-md-6">
                                         <label class="font-weight-bold" for="ciudad">CIUDAD</label>
-                                            <input type="text" class="form-control text-uppercase" name="ciudad" id="ciudad" placeholder="Ingrese Ciudad" maxlength="50" value="<?php echo isset($reg['ciudad']) ? $reg['ciudad'] : '';?>">
+                                            <input type="text" class="form-control text-uppercase" name="ciudad" id="ciudad" placeholder="Ingrese Ciudad" maxlength="50" value="<?php echo isset($reg['ciudad']) ? $reg['ciudad'] : '';?>" autofocus>
                                    </div>
 
 
                                   <div class="col-12 col-md-6">
                                                   <label class="font-weight-bold" for="depar">DEPARTAMENTO</label>
                                                             <select name="depar" id="depar" class="form-control" required>
-                    								     <option value="">Seleccione un Departamento</option>
+                    								     <option value="<?php echo isset($reg['departamento']) ? $reg['departamento'] : 'Seleccione un Departamento';?>"><?php echo isset($reg['departamento']) ? $reg['departamento'] : 'Seleccione un Departamento';?></option>
                     								     <option value="CONCEPCION">CONCEPCION</option>
                     								     <option value="SANPEDRO">SAN PEDRO</option>
                     								     <option value="CORDILLERA">CORDILLERA</option>

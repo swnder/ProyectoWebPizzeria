@@ -44,7 +44,7 @@
                     <div class="col">
                          <!-- <form id="formulario" action="../servicios/clientesServicios.php" method="post"> -->
                          <!-- <form name="form_clientes" onsubmit="return false" action="return false"> -->
-                     <form id="form_usuario"onkeypress="if(event.keyCode == 13) event.returnValue =validarCampos();">
+                     <form id="form_usuario" onkeypress="if(event.keyCode == 13) event.returnValue =validarCampos();">
                               <!-- PRIMERA FILA -->
                               <div class="form-group row mt-3">
 
@@ -53,13 +53,15 @@
                                         <input type="text" class="form-control text-uppercase" name="usuario" id="usuario" placeholder="Ingrese un Usuario" maxlength="50" autofocus value="<?php echo isset($reg['usuario']) ? $reg['usuario'] : '';?>">
                                    </div>
                                    <!-- nivel -->
-                                   <div class="col-12 col-md-6 mb-3">
-                                       <label class="font-weight-bold" for="nivel">NIVEL</label>
-                                       <select name="nivel" id="nivel" class="form-control" required>
-                                       <option value="">Seleccione el nivel del Usuario</option>
-                                      <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-                                      <option value="USUARIO">USUARIO</option>
-                                   </select>
+                     <div class="col-12 col-md-6 mb-3">
+                         <label class="font-weight-bold" for="nivel">NIVEL</label>
+                         <select name="nivel" id="nivel" class="form-control" required value>
+
+                         <option value="<?php echo isset($reg['nivel']) ? $reg['nivel'] : '';?>"><?php echo isset($reg['nivel']) ? $reg['nivel'] : '';?></option>
+
+                        <option value="ADMINISTRADOR">ADMINISTRADOR</option>
+                        <option value="USUARIO">USUARIO</option>
+                     </select>
                                   </div>
 
                                </div>
@@ -114,13 +116,16 @@
                          echo "<script>
                               document.getElementById('accion').value = 'M';
                               document.getElementById('titulo').innerHTML = 'MODIFICAR USUARIO';
+                              document.getElementById('usuario').attr('readonly','readonly');
+                              document.getElementById('usuario').addClass('readonly');
+                              document.getElementById('pass2').focus();
                               document.title = 'Sistema Pizzeria/USUARIO Modificar';
                          </script>";
                     }
                }
           ?>
           <script>
-               document.getElementById("nivel").focus(); //Cuando es Modificar
+               document.getElementById("pass2").focus(); //Cuando es Modificar
                // apartir de aqui funcional los botones
 
                function registrar(){
@@ -172,10 +177,17 @@
                     }else if ($("#pass2").val() == "" || $("#pass2").val().length < 3){
                          alertify.error("Introduzca una contraseña valida");
                          $("#pass2").focus();
-                    }else if (!($("#pass").val() == $("#pass2").val())) {
+                    }else if (accion == "M") {
+                        if(!($("#pass").val() == MD5($("#pass2").val()))){
                           alertify.error("Las contraseñas no son iguales");
                           $("#pass2").focus();
-                    }else{
+                        }
+
+                    }else if(!($("#pass").val() == $("#pass2").val())){
+                      alertify.error("Las contraseñas no son iguales");
+                      $("#pass2").focus();
+                    }
+                    else{
 
                          if ($("#accion").val() == "N"){
                               registrar();
@@ -203,32 +215,36 @@
                     function(){
                          alertify.error("Puede continuar con la carga de datos");
                     }).set("labels", {ok:"SI", cancel:"NO"});
-                    $("#ruc").focus();
+                    $("#usuario").focus();
                }
 
-               function seleccionarTipoCliente(){
-                    t = $("#nivel").val();
-                    if (t != ""){
-                         sel = document.getElementById("nivel");
-                         for (var i = 0; i < sel.length; i++) {
-                              if(sel[i].value == t){
-                                   sel.selectedIndex = i;
-                                   break;
-                              }
-                         }
-                    }
-               }
+               // function seleccionarTipoCliente(){
+               //      t = $("#nivel").val();
+               //      if (t != ""){
+               //           sel = document.getElementById("nivel");
+               //           for (var i = 0; i < sel.length; i++) {
+               //                if(sel[i].value == t){
+               //                     sel.selectedIndex = i;
+               //                     break;
+               //                }
+               //           }
+               //      }
+               // }
 
                function actualizar(){
-                       user = $("#usuario").val();
-                       nivel = $("#nivel").val();
-                       pass = $("#pass").val();
-                       acc = $("#accion").val();
+                      var datos = $("#form_usuario").serialize();
+                       // user = $("#usuario").val();
+                       // nivel = $("#nivel").val();
+                       // pass = $("#pass").val();
+                       // acc = $("#accion").val();
+                       // alert(datos);
+                       // return false;
                        $.ajax({
                             type: "POST",
                             dataType: 'html',
                             url: "../servicios/UsuariosServicios.php",
-                            data: "usuario=" + user + "&nivel=" + nivel + "&pass="+pass+"&accion=" + acc,
+                            // data: "usuario=" + user + "&nivel=" + nivel + "&pass="+pass+"&accion=" + acc,
+                            data: datos,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 3){
                               alertify.warning("El usuario ya existe. Cambie por otro");
@@ -245,31 +261,9 @@
                     });
                }
 
-               seleccionarTipoCliente();
+
           </script>
-<script>
-$(".check-seguridad").strength({
-           templates: {
-           toggle: '<span class="input-group-addon"><span class="glyphicon glyphicon-eye-open {toggleClass}"></span></span>'
 
-           },
-           scoreLables: {
-                   empty: 'Vacío',
-                   invalid: 'Invalido',
-                   weak: 'Débil',
-                   good: 'Bueno',
-                   strong: 'Fuerte'
-               },
-           scoreClasses: {
-                   empty: '',
-                   invalid: 'label-danger',
-                   weak: 'label-warning',
-                   good: 'label-info',
-                   strong: 'label-success'
-               },
-
-       });
-</script>
 
      </body>
 </html>
