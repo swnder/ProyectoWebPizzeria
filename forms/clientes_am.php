@@ -58,15 +58,15 @@
                          <!-- <form name="form_clientes" onsubmit="return false" action="return false"> -->
                          <form id="form_clientes">
                               <!-- PRIMERA FILA -->
-                              <div class="form-group row mt-3">
-                                   <div class="col-12 col-md-6 mb-3">
-                                        <label class="font-weight-bold" for="ruc">R.U.C.</label>
-                                        <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ingrese R.U.C." onkeypress="return validarRuc(event)" maxlength="15" autofocus value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
-                                   </div>
-                                   <div class="col-12 col-md-6">
-                                        <label class="font-weight-bold" for="razon">RAZÓN SOCIAL</label>
-                                        <input type="text" class="form-control text-uppercase" name="razon" id="razon" placeholder="Ingrese Razón Social" maxlength="50" value="<?php echo isset($reg['razonsocial']) ? $reg['razonsocial'] : '';?>">
-                                   </div>
+                  <div class="form-group row mt-3">
+                       <div class="col-12 col-md-6 mb-3">
+                            <label class="font-weight-bold" for="ruc">R.U.C.</label>
+                            <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ingrese R.U.C." onkeypress="return validarRuc(event)" maxlength="15" autofocus value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
+                       </div>
+                       <div class="col-12 col-md-6">
+                            <label class="font-weight-bold" for="razon">RAZÓN SOCIAL</label>
+                            <input type="text" class="form-control text-uppercase" name="razon" id="razon" placeholder="Ingrese Razón Social" maxlength="50" value="<?php echo isset($reg['razonsocial']) ? $reg['razonsocial'] : '';?>">
+                       </div>
 
                               </div>
 
@@ -112,10 +112,10 @@
      							<button type="button" class="btn btn-primary btn-block" onclick="window.location.href='clientes_lista.php';"><i class="fa fa-table"></i> Ir a lista de clientes</button>
      						</div>
      					</div>
-                              <input type="hidden" name="accion" id="accion">
-                              <input type="hidden" name="id" id="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>">
-                              <input type="hidden" name="rucSinModif" id="rucSinModif" value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
-                              <input type="hidden" name="tipoCli" id="tipoCli" value="<?php echo isset($reg['tipo']) ? $reg['tipo'] : '';?>">
+                <input type="hidden" name="accion" id="accion">
+                <input type="hidden" name="id" id="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>">
+                <input type="hidden" name="rucSinModif" id="rucSinModif" value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
+                <input type="hidden" name="tipoCli" id="tipoCli" value="<?php echo isset($reg['tipo']) ? $reg['tipo'] : '';?>">
                          </form>
                     </div>
                </div>

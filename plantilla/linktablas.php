@@ -17,6 +17,7 @@
 <script src="../js/jquery-3.3.1.min.js"></script>
 <!-- Boostrap -->
 <script src="../bt/bootstrap.min.js"></script>
+<script src="../bt/mdb.min.js"></script>
 <!-- Datatables -->
 <script src="../dt/datatables.min.js"></script>
 <!-- Datatables Botones-->

@@ -43,12 +43,16 @@
      </head>
 
      <body class="bg-dark text-white">
+
+
+
+
           <?php
                if (isset($_GET['id'])){ //Solo para modificar
                     require_once("../servicios/conexion.php");
           		$conex = conexion();
      			$id = $_GET['id'];
-     			$sql = "SELECT * FROM ciudad WHERE id = '$id'";
+     			$sql = "SELECT * FROM categoria WHERE id = '$id'";
      			$res = mysqli_query($conex, $sql);
      			$reg = mysqli_fetch_array($res);
      		}
@@ -59,39 +63,15 @@
                     <div class="col">
                          <!-- <form id="formulario" action="../servicios/clientesServicios.php" method="post"> -->
                          <!-- <form name="form_clientes" onsubmit="return false" action="return false"> -->
-                         <form id="form_ciudad" onkeypress="if(event.keyCode == 13) event.returnValue =validarCampos();">
+                         <form id="form_categoria" onkeypress="if(event.keyCode == 13) event.returnValue =validarCampos();">
                               <!-- PRIMERA FILA -->
                               <div class="form-group row mt-3">
 
                                    <div class="col-12 col-md-6">
-                                        <label class="font-weight-bold" for="ciudad">CIUDAD</label>
-                                            <input type="text" class="form-control text-uppercase" name="ciudad" id="ciudad" placeholder="Ingrese Ciudad" maxlength="50" value="<?php echo isset($reg['ciudad']) ? $reg['ciudad'] : '';?>">
+                                        <label class="font-weight-bold" for="ciudad">CATEGORIA</label>
+                                            <input type="text" class="form-control text-uppercase" name="ciudad" id="ciudad" placeholder="Ingrese Categoria" maxlength="50" value="<?php echo isset($reg['categoria']) ? $reg['categoria'] : '';?>">
                                    </div>
 
-
-                                  <div class="col-12 col-md-6">
-                                                  <label class="font-weight-bold" for="depar">DEPARTAMENTO</label>
-                                                            <select name="depar" id="depar" class="form-control" required>
-                    								     <option value="">Seleccione un Departamento</option>
-                    								     <option value="CONCEPCION">CONCEPCION</option>
-                    								     <option value="SANPEDRO">SAN PEDRO</option>
-                    								     <option value="CORDILLERA">CORDILLERA</option>
-                    								     <option value="GUAIRA">GUAIRA</option>
-                    								     <option value="CAAGUAZU">CAAGUAZU</option>
-                    								     <option value="CAAZAPA">CAAZAPA</option>
-                    								     <option value="ITAPUA">ITAPUA</option>
-                    								     <option value="MISIONES">MISIONES</option>
-                    								     <option value="PARAGUARI">PARAGUARI</option>
-                    								     <option value="ALTOPARANA">ALTOPARANA</option>
-                    								     <option value="CENTRAL">CENTRAL</option>
-                    								     <option value="ÑEMBUCU">ÑEMBUCU</option>
-                    								     <option value="AMAMBAY">AMAMBAY</option>
-                    								     <option value="CANINDEJU">CANINDEJU</option>
-                    								     <option value="PRESIDENTEHAYES">PRESIDENTE HAYES</option>
-                    								     <option value="BOQUERON">BOQUERON</option>
-                    								     <option value="ALTOPARAGUAY">ALTO PARAGUAY</option>
-                    							     </select>
-                                                   </div>
 
                                   </div>
                                                     <!-- CUARTA FILA -->
@@ -105,12 +85,12 @@
                            						</div>
 
                            						<div class="col-12 col-md-4 mb-2">
-                           							<button type="button" class="btn gris btn-block" onclick="window.location.href='ciudadlista.php';"><i class="fa fa-table"></i> Ir a lista de ciudad</button>
+                           							<button type="button" class="btn gris btn-block" onclick="window.location.href='categoria_lista.php';"><i class="fa fa-table"></i> Ir a lista de Categoria</button>
                            						</div>
                      					</div>
                                 <input type="hidden" name="accion" id="accion">
                                 <input type="hidden" name="id" id="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>">
-                                <input type="hidden" name="depar" id="depar" value="<?php echo isset($reg['departamento']) ? $reg['departamento'] : '';?>">
+
 
                          </form>
                     </div>
@@ -122,61 +102,61 @@
                     if ($_GET["accion"] == "N"){
                          echo "<script>
                               document.getElementById('accion').value = 'N';
-                              document.getElementById('titulo').innerHTML = 'ALTA DE CIUDAD';
-                              document.title = 'Sistema Pizzeria/Ciudad Alta';
+                              document.getElementById('titulo').innerHTML = 'ALTA DE CATEGORIA';
+                              document.title = 'Sistema Pizzeria/CATEGORIA ALTA';
                          </script>";
                     }else if ($_GET["accion"] == "M"){
                          echo "<script>
                               document.getElementById('accion').value = 'M';
                               document.getElementById('titulo').innerHTML = 'MODIFICAR CIUDAD';
-                              document.title = 'Sistema Pizzeria/Ciudad Modificar';
+                              document.title = 'Sistema Pizzeria/CATEGORIA MODIFICAR';
                          </script>";
                     }
                }
-          ?>
-          <script>
-               document.getElementById("depar").focus(); //Cuando es Modificar
 
-               function registrar(){
-                    // var datos = $("#form_ciudad").serialize();
-                     ciu = $("#ciudad").val();
-                     depar = $("#depar").val();
-                     acc = $("#accion").val();
-                    // alert(ciu+depar+acc);
+          ?>
+
+          <script>
+               document.getElementById("ciudad").focus(); //Cuando es Modificars
+
+
+              function registrar(){
+                   var datos = $("#form_categoria").serialize();
+                    // descripcion = $("#descri").val();
+                    // ubi = $("#ubi").val();
+                    // silla = $("$silla").val();
+                    // acc = $("#accion").val();
+                    // alert(datos);
                     // return false;
-                    $.ajax({
-                         type: "POST",
-                         dataType: 'html',
-                         url: "../servicios/CiudadServicios.php",
-                         data: "ciudad=" + ciu + "&depar=" + depar + "&accion=" + acc,
-                         // data: datos,
-                    }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
-                         if (resp == 1){
-                              alertify.warning("La ciudad ya existe. Cambie por otro");
-                              $("#ciudad").focus();
-                         }else if (resp == 2){
-                              alertify.success("Registro guardado con éxito");
-                              limpiarCampos();
-                         }
-                    }).fail( function(resp){ //se ejecuta en que caso de que haya ocurrido algún error
-                         alertify.error(resp);
-                    });
-               }
+                   $.ajax({
+                        type: "POST",
+                        dataType: 'html',
+                        url: "../servicios/CategoriaServicios.php",
+                        // data: "ciudad=" + ciu + "&depar=" + depar + "&accion=" + acc,
+                        data: datos,
+                   }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
+                        if (resp == 1){
+                             alertify.warning("La Mesa ya existe. Cambie por otro");
+                             $("#ubi").focus();
+                        }else if (resp == 2){
+                             alertify.success("Registro guardado con éxito");
+                             limpiarCampos();
+                        }
+                   }).fail( function(resp){ //se ejecuta en que caso de que haya ocurrido algún error
+                        alertify.error(resp);
+                   });
+              }
 
                function limpiarCampos(){
                     $("#ciudad").val("");
-                    $("#depar").val("");
                     $("#ciudad").focus();
                }
 
                function validarCampos(){
 
                      if ($("#ciudad").val().length < 5){
-                         alertify.error("Ingrese como mínimo 5 caracteres la Ciudad");
+                         alertify.error("Ingrese como mínimo 5 caracteres la Categoia");
                          $("#ciudad").focus();
-                    }else if ($("#depar").val() == ""){
-                         alertify.error("Seleccione el un Departamento");
-                         $("#depar").focus();
                     }else{
                          if ($("#accion").val() == "N"){
                               registrar();
@@ -195,8 +175,9 @@
                          }else if($("#accion").val() == "M"){
                               alertify.alert("Atención", "Operación cancelada",
                                    function(){
-                                        window.location="ciudadlista.php";
+                                     window.location="categoria_lista.php";
                                    }
+
                               );
                          }
 
@@ -206,37 +187,28 @@
                     $("#ciudad").focus();
                }
 
-               function seleccionarTipoCliente(){
-                    t = $("#depar").val();
-                    if (t != ""){
-                         sel = document.getElementById("depar");
-                         for (var i = 0; i < sel.length; i++) {
-                              if(sel[i].value == t){
-                                   sel.selectedIndex = i;
-                                   break;
-                              }
-                         }
-                    }
-               }
+
 
                function actualizar(){
-                    ciu = $("#ciudad").val();
-                    depar = $("#depar").val();
-                    acc = $("#accion").val();
-                    id  = $("#id").val();
+                   var datos = $("#form_categoria").serialize();
+                    // ciu = $("#ciudad").val();
+                    // depar = $("#depar").val();
+                    // acc = $("#accion").val();
+                    // id  = $("#id").val();
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
-                         url: "../servicios/CiudadServicios.php",
-                         data: "ciudad=" + ciu + "&depar=" + depar + "&accion=" + acc  + "&id=" + id,
+                         url: "../servicios/CategoriaServicios.php",
+                         // data: "ciudad=" + ciu + "&depar=" + depar + "&accion=" + acc  + "&id=" + id,
+                         data:datos,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 3){
-                              alertify.warning("La ciudad ya existe. Cambie por otro");
+                              alertify.warning("La categoria ya existe. Cambie por otro");
                               $("#depar").focus();
                          }else if (resp == 4){
                               alertify.alert("Modificar", "Registro actualizado con éxito",
                                    function(){
-                                        window.location="../forms/ciudadlista.php";
+                                        window.location="../forms/categoria_lista.php";
                                    }
                               );
                          }
@@ -245,7 +217,7 @@
                     });
                }
 
-               seleccionarTipoCliente();
+
           </script>
      </body>
 </html>

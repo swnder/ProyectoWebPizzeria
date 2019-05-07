@@ -60,11 +60,11 @@ CREATE TABLE `ciudad` (
   `ciudad` varchar(30) DEFAULT NULL,
   `departamento` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ciudad` */
 
-insert  into `ciudad`(`id`,`ciudad`,`departamento`) values (1,'Concepción','Concepción');
+insert  into `ciudad`(`id`,`ciudad`,`departamento`) values (1,'CONCEPCIóN','CONCEPCION'),(8,'LORETO','CONCEPCION'),(13,'HORQUETA','CONCEPCION'),(14,'VALLEMI','CONCEPCION'),(15,'SAN CARLOS','CONCEPCION');
 
 /*Table structure for table `cliente` */
 
@@ -197,11 +197,11 @@ CREATE TABLE `historial` (
   PRIMARY KEY (`id`),
   KEY `idusuario` (`idusuario`),
   CONSTRAINT `historial_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 /*Data for the table `historial` */
 
-insert  into `historial`(`id`,`idusuario`,`fhconexion`,`fhdesconexion`) values (15,1,'2019-05-04 21:34:56','0000-00-00 00:00:00'),(16,2,'2019-05-04 21:35:53','0000-00-00 00:00:00'),(17,1,'2019-05-04 21:37:41','0000-00-00 00:00:00'),(18,1,'2019-05-04 22:25:35','0000-00-00 00:00:00'),(19,2,'2019-05-04 22:33:16','0000-00-00 00:00:00'),(20,2,'2019-05-04 22:34:39','0000-00-00 00:00:00'),(21,2,'2019-05-04 22:36:45','0000-00-00 00:00:00'),(22,2,'2019-05-04 22:37:29','0000-00-00 00:00:00'),(23,2,'2019-05-04 22:42:25','0000-00-00 00:00:00'),(24,1,'2019-05-04 23:25:00','0000-00-00 00:00:00'),(25,2,'2019-05-04 23:29:40','0000-00-00 00:00:00'),(26,2,'2019-05-04 23:58:22','0000-00-00 00:00:00'),(27,2,'2019-05-05 00:27:46','0000-00-00 00:00:00'),(28,2,'2019-05-05 00:28:45','0000-00-00 00:00:00'),(29,1,'2019-05-05 00:30:07','0000-00-00 00:00:00'),(30,1,'2019-05-05 00:34:26','0000-00-00 00:00:00'),(31,1,'2019-05-05 11:18:03','0000-00-00 00:00:00');
+insert  into `historial`(`id`,`idusuario`,`fhconexion`,`fhdesconexion`) values (15,1,'2019-05-04 21:34:56','0000-00-00 00:00:00'),(16,2,'2019-05-04 21:35:53','0000-00-00 00:00:00'),(17,1,'2019-05-04 21:37:41','0000-00-00 00:00:00'),(18,1,'2019-05-04 22:25:35','0000-00-00 00:00:00'),(19,2,'2019-05-04 22:33:16','0000-00-00 00:00:00'),(20,2,'2019-05-04 22:34:39','0000-00-00 00:00:00'),(21,2,'2019-05-04 22:36:45','0000-00-00 00:00:00'),(22,2,'2019-05-04 22:37:29','0000-00-00 00:00:00'),(23,2,'2019-05-04 22:42:25','0000-00-00 00:00:00'),(24,1,'2019-05-04 23:25:00','0000-00-00 00:00:00'),(25,2,'2019-05-04 23:29:40','0000-00-00 00:00:00'),(26,2,'2019-05-04 23:58:22','0000-00-00 00:00:00'),(27,2,'2019-05-05 00:27:46','0000-00-00 00:00:00'),(28,2,'2019-05-05 00:28:45','0000-00-00 00:00:00'),(29,1,'2019-05-05 00:30:07','0000-00-00 00:00:00'),(30,1,'2019-05-05 00:34:26','0000-00-00 00:00:00'),(31,1,'2019-05-05 11:18:03','0000-00-00 00:00:00'),(32,2,'2019-05-05 12:31:15','0000-00-00 00:00:00'),(33,2,'2019-05-05 19:06:58','0000-00-00 00:00:00'),(34,2,'2019-05-05 19:20:57','0000-00-00 00:00:00'),(35,1,'2019-05-05 19:37:45','0000-00-00 00:00:00'),(36,1,'2019-05-06 00:34:57','0000-00-00 00:00:00'),(37,1,'2019-05-06 00:37:33','0000-00-00 00:00:00'),(38,2,'2019-05-06 00:44:49','0000-00-00 00:00:00'),(39,2,'2019-05-06 02:45:40','0000-00-00 00:00:00'),(40,1,'2019-05-06 11:02:57','0000-00-00 00:00:00'),(41,1,'2019-05-06 15:11:36','0000-00-00 00:00:00');
 
 /*Table structure for table `marca` */
 
@@ -221,13 +221,15 @@ DROP TABLE IF EXISTS `mesa`;
 
 CREATE TABLE `mesa` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `despcipcion` varchar(50) DEFAULT NULL,
+  `descripcion` varchar(50) DEFAULT NULL,
   `ubicacion` varchar(50) DEFAULT NULL,
   `sillas` int(9) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 /*Data for the table `mesa` */
+
+insert  into `mesa`(`id`,`descripcion`,`ubicacion`,`sillas`) values (1,'NDA QUE MOSTRAR','EN EL CIELO',4),(2,'MESA REDONDA','EN EL CENTRO',5);
 
 /*Table structure for table `producto` */
 
@@ -303,11 +305,11 @@ CREATE TABLE `usuario` (
   `pass` varchar(100) NOT NULL,
   `nivel` varchar(15) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuario` */
 
-insert  into `usuario`(`id`,`usuario`,`pass`,`nivel`) values (1,'admin','202cb962ac59075b964b07152d234b70','Administrador'),(2,'sandro','202cb962ac59075b964b07152d234b70','Administrador');
+insert  into `usuario`(`id`,`usuario`,`pass`,`nivel`) values (1,'PEDRO','37693cfc748049e45d87b8c7d8b9aacd','Administrador'),(2,'PEDRO','37693cfc748049e45d87b8c7d8b9aacd','Administrador'),(4,'JULIA','eccbc87e4b5ce2fe28308fd9f2a7baf3','USUARIO');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

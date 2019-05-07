@@ -6,26 +6,27 @@
      if ($opc == "N" or $opc == "M"){
 		//Capturar los datos enviados por ajax
 		$id = $_POST["id"];
-		$ciu = strtoupper($_POST["ciudad"]);
-		$dep = $_POST["depar"];
+		$descri = strtoupper($_POST["descri"]);
+		$ubi = strtoupper($_POST["ubi"]);
+    $silla = $_POST["sillas"];
 
 		if ($opc == "M"){
 			// $rsm = $_POST["rsm"];
 			$id  = $_POST["id"];
-      $dep = $_POST["depar"];
+      $ubi = strtoupper($_POST["ubi"]);
 		}
 	}
 
 
      if ($opc == "N"){	//NUEVO
 		//VERIFICAR QUE la ciudad NO EXISTA
-		 $sql = "SELECT ciudad FROM ciudad WHERE ciudad = '$ciu'";
+		 $sql = "SELECT ubicacion FROM mesa WHERE ubicacion = '$ubi'";
 		 $res = mysqli_query($conex, $sql);
 		 $num_reg = mysqli_num_rows($res);
 		 if ($num_reg > 0){
 		 	echo 1;
 		 }else{
-               $sql = "INSERT INTO ciudad (ciudad, departamento) VALUES ('$ciu', '$dep')";
+               $sql = "INSERT INTO mesa (descripcion, ubicacion,sillas) VALUES ('$descri', '$ubi','$silla')";
 			$res = mysqli_query($conex, $sql);
 			echo 2;
 		 }
@@ -33,7 +34,7 @@
           $grabar = true;
 		// if ($ruc != $rsm){ //Se modifico el Nº de RUC
 			//VERIFICAR QUE EL DEPARTAMENTO NO EXISTA
-			$sql = "SELECT ciudad FROM ciudad WHERE id = '$ciu'";
+			$sql = "SELECT ubicacion FROM mesa WHERE ubicacion = '$ubi'";
 			$resul = mysqli_query($conex, $sql);
 			$num_reg = mysqli_num_rows($resul);
 			if ($num_reg > 0){
@@ -42,13 +43,13 @@
 	       	}
 		// }
 		if ($grabar == true){
-			$sql = "UPDATE ciudad SET ciudad ='$ciu', departamento ='$dep' WHERE id='$id'";
+			$sql = "UPDATE mesa SET descripcion ='$descri', ubicacion ='$ubi', sillas='$silla' WHERE id='$id'";
 			$resul = mysqli_query($conex, $sql);
 			echo 4;
 		}
 	}else if ($opc == "E"){	//ELIMINAR
           $id = $_POST["id"];
-          $sql = "DELETE FROM ciudad WHERE id='$id'";
+          $sql = "DELETE FROM mesa WHERE id='$id'";
 		$res = mysqli_query($conex, $sql);
           echo 5;
      }

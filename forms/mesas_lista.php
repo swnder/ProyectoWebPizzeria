@@ -8,7 +8,6 @@
 
           <?php require_once "../plantilla/linktablas.php";?>
 
-
      </head>
      <body >
      <!-- cabecera -->
@@ -19,8 +18,7 @@
           <div class="container bg-dark mt-5" id="tabla">
                <div class="table-responsive">
                  <!-- cabecera de la tabla -->
-                 asldkfaksasdfasdasdfa
-                    <h2 class="text-center mt-3">LISTA DE MESA</h2>
+                  <h2 class="text-center mt-3">LISTA DE MESA</h2>
                     <table class="table table-bordered display nowrap stripe" id="tablaMesa" style="width:100%">
                          <thead>
                               <tr>
@@ -35,7 +33,7 @@
                                    <th>ELIMINAR</th>
                               </tr>
                          </thead>
-                         <tbody id="tbody">
+                         <tbody>
                            <?php
                                 require_once("../servicios/conexion.php");
                                 $conex = conexion();
@@ -204,6 +202,7 @@
                               fi = this.rowIndex;
                               id = tabla.rows[fi].cells[0].innerHTML;
                               window.location="mesas_Abm.php?accion=M&id="+id;
+
                          }
                     }
                }

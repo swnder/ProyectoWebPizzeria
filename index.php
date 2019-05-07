@@ -6,10 +6,10 @@
           <meta name="theme-color" content="black">
           <title>Sistema Pizzeria</title>
           <link rel="icon" href="img/pizzeria.ico"/>
-          <link rel="stylesheet" href="/css/master.css">
+
           <!-- CSS REQUERIDOS -->
           <link rel="stylesheet" href="css/misestilos1.css">
-          <link rel="stylesheet" href="css/toastr.css">
+
           <link rel="stylesheet" href="alertify/alertify.min.css">
           <!-- Bootstrap -->
           <link rel="stylesheet" href="bt/bootstrap.min.css">
@@ -17,9 +17,9 @@
           <!-- JS REQUERIDOS -->
           <!-- JQuery -->
           <script src="js/jquery-3.3.1.min.js"></script>
-          <script src="js/bootstrap.js"></script>
+
           <script src="bt/mdb.min.js"></script>
-          <script src="js/toastr.js"></script>
+
           <script src="alertify/alertify.min.js">
 
           </script>
@@ -39,8 +39,7 @@
      </head>
      <body style="
         background: url('img/Pizza2.jpg') no-repeat fixed center;
-        background-size: cover;
-        font-family: 'Roboto',Sans-Serif;">
+        background-size: cover;">
 
           <?php session_start(); ?>
           <script>
