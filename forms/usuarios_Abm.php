@@ -57,7 +57,7 @@
                          <label class="font-weight-bold" for="nivel">NIVEL</label>
                          <select name="nivel" id="nivel" class="form-control" required value>
 
-                         <option value="<?php echo isset($reg['nivel']) ? $reg['nivel'] : '';?>"><?php echo isset($reg['nivel']) ? $reg['nivel'] : '';?></option>
+                         <option value="<?php echo isset($reg['nivel']) ? $reg['nivel'] : '';?>"><?php echo isset($reg['nivel']) ? $reg['nivel'] : 'NIVEL DE USUARIO';?></option>
 
                         <option value="ADMINISTRADOR">ADMINISTRADOR</option>
                         <option value="USUARIO">USUARIO</option>
@@ -206,7 +206,7 @@
                          }else if($("#accion").val() == "M"){
                               alertify.alert("Atención", "Operación cancelada",
                                    function(){
-                                        window.location="ciudadlista.php";
+                                        window.location="usuarios_lista.php";
                                    }
                               );
                          }

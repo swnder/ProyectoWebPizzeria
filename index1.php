@@ -1,21 +1,3 @@
-<?php
-      require_once("./servicios/conexion.php");
-      $conex = conexion();
-      $sql = "SELECT * FROM usuario WHERE estado = 'activo'";
-      $res = mysqli_query($conex, $sql);
-      $reg = mysqli_fetch_array($res);
-
-
-
-      if (isset($_POST['loginname'])){
-        echo "nada que mostraaaaaaaaarteee ksajdfñlkajsdñflkajsdfñlk";
-          // header("Location: ../forms/malaidea.php");
-        }else{
-
-          // echo "no existe";
-
-        }
- ?>
 
 
 <!DOCTYPE html>
@@ -39,20 +21,21 @@
 </style>
 
      </head>
-     <body>
+     <body style="
+        background: url('img/Pizza2.jpg') no-repeat fixed center;
+        background-size: cover;">
 
 
            <script>
               $(document).ready(function(){
-                <?php session_start(); ?>
                   var usuValido = "<?php echo isset($_SESSION['usuarioValido']) ? $_SESSION['usuarioValido'] : '0'; ?>";
                   var usuNivel  = "<?php echo isset($_SESSION['nivelUsuario']) ? $_SESSION['nivelUsuario'] : '0'; ?>";
                   if(usuValido == 'no'){
                       alertify.error("Usuario o contraseña incorrecto!!!", "Mensaje del sistema");
                   }else if (usuValido == "si"){
                       if(usuNivel == "ADMINISTRADOR"){
-
-                        // alertify.warning("Usuario logeado Exitosamente!!!");
+                        <?php session_start(); ?>
+                        alertify.warning("Usuario logeado Exitosamente!!!");
                         //redirecciona a la pagina despues del login
                           window.location="./menuAdmin.php";
                       }else{
@@ -73,10 +56,9 @@
 
                       <!-- usuario -->
                       <div class="row">
-                        <div class="col-md-12 mb-3 input-group">
-
-                          <span class="input-group-text"><i class="fa fa-user"></i></span>
-                            <input class="form-control" id="loginname" name="loginname" type="text" placeholder="Usuario" autofocus onkeypress="enter(event)">
+                        <div class="col-md-12 mb-3">
+                          <span class=""><i class="fa fa-user"></i></span>
+                            <input class="form-control" id="loginname" name="loginname" type="text" placeholder="Usuario" autofocus>
                           </div>
 
                       </div>
@@ -84,9 +66,8 @@
                       <div class="row">
                           <div class="col-sm-12 ">
                               <div class="form-group row">
-                                  <div class="col-md-12 input-group">
-                                    <span class="input-group-text"><i class="fa fa-key"></i></span>
-                                    <input class="form-control" placeholder="Contraseña" id="password" name="password" type="password" value="" onkeypress="enter(event)">
+                                  <div class="col-md-12">
+                							        <input class="form-control" placeholder="Contraseña" id="password" name="password" type="password" value="" onkeypress="enter(event)">
                                         </div>
                                     </div>
                       <div class="form-group">

@@ -6,14 +6,14 @@
      if ($opc == "N" or $opc == "M"){
 		//Capturar los datos enviados por ajax
 		$id = $_POST["id"];
-		$user = strtoupper($_POST["usuario"]);
+		$user = $_POST["usuario"];
 		$nivel = strtoupper($_POST["nivel"]);
     $pass = MD5($_POST["pass"]);
 
 		if ($opc == "M"){
 			// $rsm = $_POST["rsm"];
 			$id  = $_POST["id"];
-      $ubi = strtoupper($_POST["ubi"]);
+
 		}
 	}
 
@@ -49,8 +49,19 @@
 		}
 	}else if ($opc == "E"){	//ELIMINAR
           $id = $_POST["id"];
-          $sql = "DELETE FROM usuario WHERE id='$id'";
-		$res = mysqli_query($conex, $sql);
-          echo 5;
+          
+          $sql = "DELETE FROM usuario WHERE id= '$id'";
+		      $res = mysqli_query($conex, $sql);
+          // CONSULTA PARA VERIFICAR QUE BORRA EL ID
+          $sql = "SELECT * FROM usuario WHERE id='$id'";
+		      $res = mysqli_query($conex, $sql);
+          $num_reg = mysqli_num_rows($res);
+          if ($num_reg > 0){
+            echo $id;
+          }else{
+
+            echo 5;
+          }
+
      }
 ?>

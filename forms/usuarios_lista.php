@@ -152,6 +152,7 @@
                               //Obtener el id (columna oculta)
                               fi = this.rowIndex;
                               id = tabla.rows[fi].cells[0].innerHTML;
+                              // alert("fila :"+fi+" el id: "+id);
                          }
                     }
                     alertify.confirm().set("labels", {ok:"SI", cancel:"NO"});
@@ -160,6 +161,7 @@
                     alertify.confirm("Eliminar registro", "¿Desea eliminar el registro del Usuario?",
                          function(){ //SI
                               eliminar(id);
+
                          },
                          function(){ //NO
                               alertify.error("Operación cancelada");
@@ -168,6 +170,7 @@
                }
 
                function eliminar(id){
+                 // alert("en la funcion eliminar "+id);
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
@@ -180,6 +183,8 @@
                                         location.reload();
                                    }
                               );
+                         }else{
+                           alert("el resultado fue: "+resp);
                          }
                     }).fail( function(resp){ //se ejecuta en que caso de que haya ocurrido algún error
                          alertify.error(resp);

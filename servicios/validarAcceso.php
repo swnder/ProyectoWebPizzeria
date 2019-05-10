@@ -6,7 +6,7 @@ session_destroy();                  //Destruye la informacion de la session actu
 session_start();
 
 //recibo los datos
-$nombre = strtoupper($_POST['loginname']);
+$nombre = $_POST['loginname'];
 $contrasena = encriptar($_POST['password']);
 // $contrasena = $_POST['password'];
 
@@ -22,27 +22,41 @@ if ($nombre == null || $nombre == "") {
         $_SESSION["usuarioValido"] = "no"; //Usuario o contraseña no valido
     }else{
         foreach ($resultado as $row) {
+          //validación de caracteres semejantes
+          if (($nombre==$row['usuario']) && ($contrasena==$row['pass'])) {
             $id       = $row['id'];
             $nombre   = $row['usuario'];
             $nivel    = $row['nivel'];
+            $validado = true;
+          }
+
         }
+        if($validado){
+
         //Se crea variables de sesion
-        $_SESSION["usuarioValido"] = "si"; //Usuario y contraseña valido
-        $_SESSION["nombreUsuario"] = $nombre;
-        $_SESSION["nivelUsuario"]  = $nivel;
-        $_SESSION["idUsuario"]  = $id;
-        date_default_timezone_set('America/Asuncion');
-        $fecha=date("Y-m-d");
-        $hora = date("H:i:s");
-        $hoy = $fecha. ' '.$hora;
-        $sql="INSERT INTO historial (idusuario, fhconexion) VALUES ('$id','$hoy')";
-        $resultado = mysqli_query($conexion, $sql);
-        $consulta = "SELECT MAX(idhistorial) AS idhistorial FROM historial WHERE idusuario = '$id' ";
-        $res = mysqli_query($conexion, $consulta);
-        foreach ($res as $rows) {
-            $idHistorial = $rows['idhistorial'];
-        }
-        $_SESSION["idHistorial"]  = $idHistorial;
+            $_SESSION["usuarioValido"] = "si"; //Usuario y contraseña valido
+            $_SESSION["nombreUsuario"] = $nombre;
+            $_SESSION["nivelUsuario"]  = $nivel;
+            $_SESSION["idUsuario"]  = $id;
+            $sql="UPDATE usuario SET estado='activo' where id='$id'";
+;
+            $resultado = mysqli_query($conexion, $sql);
+            date_default_timezone_set('America/Asuncion');
+            $fecha=date("Y-m-d");
+            $hora = date("H:i:s");
+            $hoy = $fecha. ' '.$hora;
+            $sql="INSERT INTO historial (fhconexion,usuario,nivel) VALUES ('$hoy','$nombre','$nivel')";
+            $resultado = mysqli_query($conexion, $sql);
+            $consulta = "SELECT id FROM historial WHERE usuario = '$nombre' ";
+            $res = mysqli_query($conexion, $consulta);
+            foreach ($res as $rows) {
+                $idHistorial = $rows['idhistorial'];
+            }
+            $_SESSION["idHistorial"]  = $idHistorial;
+            
+          }else {
+                  $_SESSION["usuarioValido"] = "no"; //Usuario o contraseña no valido
+          }
 
     }
 
