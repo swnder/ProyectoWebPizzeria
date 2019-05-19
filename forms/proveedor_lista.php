@@ -9,12 +9,11 @@
      </head>
      <body >
        <?php require_once "../plantilla/cabecera.php" ?>
-       <br><br><br>
 
-           <div class="container">
-               <div class="table-responsive" id="tabla">
-                    <h2 class="text-center mt-5">PROVEEDOR</h2>
-                    <table class="table table-bordered display nowrap stripe" id="tablaproveedor" style="width:100%">
+           <div class="container mt-5" id="tabla">
+               <div class="table-responsive mb-3" >
+                    <h2 class="text-center mt-3">PROVEEDOR</h2>
+                    <table class="table table-bordered display nowrap stripe " id="tablaproveedor" style="width:100%">
                          <thead>
                               <tr>
                                    <th hidden>ID</th>
@@ -85,40 +84,44 @@
                          dom: 'Bfrtip',
                          buttons: [
 
-                              {
-                                        extend: "copyHtml5",
-                                        name: "copyBtn",
-                                        text: "<i class='fa fa-copy'> Copiar</i>",
-                                        titleAttr: 'Copiar',
-                                   },
-                                   // 'excelHtml5',
-                                   {
-                                        extend: "excelHtml5",
-                                        name: "excelBtn",
-                                        text: "<i class='fa fa-table'> Exportar a Excel</i>",
-                                        titleAttr: 'Excel',
-                                        exportOptions: {
-                                             columns: [1,2,3,4,5,6]
-                                        }
-                                   },
+                              // {
+                              //           extend: "copyHtml5",
+                              //           className:"btn gris",
+                              //           name: "copyBtn",
+                              //           text: "<i class='fa fa-copy'> Copiar</i>",
+                              //           titleAttr: 'Copiar',
+                              //      },
+                              //      // 'excelHtml5',
+                              //      {
+                              //           extend: "excelHtml5",
+                              //           className:"btn gris",
+                              //           name: "excelBtn",
+                              //           text: "<i class='fa fa-table'> Exportar a Excel</i>",
+                              //           titleAttr: 'Excel',
+                              //           exportOptions: {
+                              //                columns: [1,2,3,4,5,6]
+                              //           }
+                              //      },
                                    // 'csvHtml5',
-                                   {
-                                        extend: "csvHtml5",
-                                        name: "csvBtn",
-                                        text: "<i class='fa fa-file-excel-o'> Exportar a csv</i>",
-                                        titleAttr: 'Csv',
-                                        exportOptions: {
-                                             columns: [1,2,3,4,5,6]
-                                        }
-                                   },
+                                   // {
+                                   //      extend: "csvHtml5",
+                                   //      className:"btn gris",
+                                   //      name: "csvBtn",
+                                   //      text: "<i class='fa fa-file-excel-o'> Exportar a csv</i>",
+                                   //      titleAttr: 'Csv',
+                                   //      exportOptions: {
+                                   //           columns: [1,2,3,4,5,6]
+                                   //      }
+                                   // },
                                    // 'pdfHtml5',
                                    {
                                         extend: "pdfHtml5",
+                                        className:"btn gris",
                                         name: "pdfBtn",
                                         text: "<i class='fa fa-file-pdf-o'> Exportar a PDF</i>",
                                         titleAttr: 'pdf',
-                                        tittle: 'PDF-CLIENTES',
-                                        filename: 'Clientes-PDf',
+                                        tittle: 'PDF-Proveedor',
+                                        filename: 'Proveedor-PDf',
                                         orientation: 'landscape',
                                         exportOptions: {
                                              columns: [1,2,3,4,5,6]
@@ -138,7 +141,7 @@
                                                             {
                                                                  alignment:'center',
                                                                  text: [
-                                                                      {text: page.toString(), italics: true}, ' of ',
+                                                                      {text: page.toString(), italics: true}, ' de ',
                                                                       {text: pages.toString(), italics: true}
                                                                  ]
                                                             }
@@ -152,6 +155,7 @@
                                    {
                                         extend: "print",
                                         name: "printBtn",
+                                        className:"btn gris",
                                         text: "<i class='fa fa-print' aria-hidden='true'> Imprimir</i>",
                                         titleAttr: 'Imprimir',
                                         orientation: 'landscape',
@@ -159,7 +163,7 @@
                                              columns: [1,2,3,4,5,6]
                                         }
                                    },
-                                   {text: "<i class='fa fa-plus' aria-hidden='true'> Nuevo Proveedor </i>", action: function (e, dt, node, config){
+                                   {className:"btn gris", text: "<i class='fa fa-plus' aria-hidden='true'> Nuevo Proveedor </i>", action: function (e, dt, node, config){
                           		     window.location="proveedor_am.php?accion=N";
                            		}}
                          ]

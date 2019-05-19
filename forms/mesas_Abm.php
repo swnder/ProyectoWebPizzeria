@@ -12,7 +12,6 @@
      </head>
 
      <body class="text-white">
-
        <?php
             if (isset($_GET['id'])){ //Solo para modificar
                  require_once("../servicios/conexion.php");

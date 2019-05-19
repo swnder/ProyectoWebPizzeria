@@ -5,7 +5,14 @@
       $res = mysqli_query($conex, $sql);
       $reg = mysqli_fetch_array($res);
 
+      session_start();
 
+       // if(session_status()==PHP_SESSION_ACTIVE){
+       if(session_status()==PHP_SESSION_NONE){
+         // echo "hay una sesión";
+       }else{
+         // echo "no hay sessión";
+       }
 
       if (isset($_POST['loginname'])){
         echo "nada que mostraaaaaaaaarteee ksajdfñlkajsdñflkajsdfñlk";

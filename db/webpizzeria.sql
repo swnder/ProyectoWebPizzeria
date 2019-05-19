@@ -47,9 +47,11 @@ CREATE TABLE `categoria` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 /*Data for the table `categoria` */
+
+insert  into `categoria`(`id`,`categoria`) values (6,'POSTRES'),(7,'BEBIDAS'),(8,'PIZZA');
 
 /*Table structure for table `ciudad` */
 
@@ -60,11 +62,11 @@ CREATE TABLE `ciudad` (
   `ciudad` varchar(30) DEFAULT NULL,
   `departamento` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8;
 
 /*Data for the table `ciudad` */
 
-insert  into `ciudad`(`id`,`ciudad`,`departamento`) values (1,'CONCEPCIóN','CONCEPCION'),(8,'LORETO','CONCEPCION'),(13,'HORQUETA','CONCEPCION'),(14,'VALLEMI','CONCEPCION'),(15,'SAN CARLOS','CONCEPCION');
+insert  into `ciudad`(`id`,`ciudad`,`departamento`) values (1,'BELEN','CONCEPCION'),(8,'LORETO','CONCEPCION'),(14,'VALLEMI','CONCEPCION'),(15,'SAN CARLOS','CONCEPCION'),(16,'YVAPOVO','CONCEPCION'),(17,'HORQUETA','CONCEPCION'),(20,'PEDRO JUAN CABALLERO','AMAMBAY'),(21,'BELLA VISTA','BOQUERON'),(22,'CONCEPCION','CONCEPCION');
 
 /*Table structure for table `cliente` */
 
@@ -119,20 +121,27 @@ DROP TABLE IF EXISTS `empleado`;
 CREATE TABLE `empleado` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `usuario` int(11) DEFAULT NULL,
-  `nombre` varchar(30) DEFAULT NULL,
+  `foto` longblob,
+  `ci` int(11) NOT NULL,
+  `nombre` varchar(60) DEFAULT NULL,
+  `apellido` varchar(60) DEFAULT NULL,
   `fechanaci` date DEFAULT NULL,
   `nacionalidad` varchar(30) DEFAULT NULL,
   `ciudad` int(11) DEFAULT NULL,
-  `telefono` int(9) DEFAULT NULL,
+  `barrio` varchar(30) DEFAULT NULL,
+  `telefono` int(9) NOT NULL,
   `cargo` varchar(30) DEFAULT NULL,
+  `direccion` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `usuario` (`usuario`),
   KEY `ciudad` (`ciudad`),
   CONSTRAINT `empleado_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuario` (`id`),
   CONSTRAINT `empleado_ibfk_2` FOREIGN KEY (`ciudad`) REFERENCES `ciudad` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `empleado` */
+
+insert  into `empleado`(`id`,`usuario`,`foto`,`ci`,`nombre`,`apellido`,`fechanaci`,`nacionalidad`,`ciudad`,`barrio`,`telefono`,`cargo`,`direccion`) values (1,1,NULL,4358744,'Sandro Roberto','Castillo Delgado','1988-01-30','paraguaya',22,'Itacurubi',985201942,'Gerente','Tte. Cabrera C/ don bosco');
 
 /*Table structure for table `facturacabecera` */
 
@@ -191,17 +200,16 @@ DROP TABLE IF EXISTS `historial`;
 
 CREATE TABLE `historial` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idusuario` int(11) DEFAULT NULL,
-  `fhconexion` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `fhdesconexion` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY (`id`),
-  KEY `idusuario` (`idusuario`),
-  CONSTRAINT `historial_ibfk_1` FOREIGN KEY (`idusuario`) REFERENCES `usuario` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
+  `fhconexion` timestamp NULL DEFAULT NULL,
+  `fhdesconexion` timestamp NULL DEFAULT NULL,
+  `usuario` varchar(100) DEFAULT NULL,
+  `nivel` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=142 DEFAULT CHARSET=utf8;
 
 /*Data for the table `historial` */
 
-insert  into `historial`(`id`,`idusuario`,`fhconexion`,`fhdesconexion`) values (15,1,'2019-05-04 21:34:56','0000-00-00 00:00:00'),(16,2,'2019-05-04 21:35:53','0000-00-00 00:00:00'),(17,1,'2019-05-04 21:37:41','0000-00-00 00:00:00'),(18,1,'2019-05-04 22:25:35','0000-00-00 00:00:00'),(19,2,'2019-05-04 22:33:16','0000-00-00 00:00:00'),(20,2,'2019-05-04 22:34:39','0000-00-00 00:00:00'),(21,2,'2019-05-04 22:36:45','0000-00-00 00:00:00'),(22,2,'2019-05-04 22:37:29','0000-00-00 00:00:00'),(23,2,'2019-05-04 22:42:25','0000-00-00 00:00:00'),(24,1,'2019-05-04 23:25:00','0000-00-00 00:00:00'),(25,2,'2019-05-04 23:29:40','0000-00-00 00:00:00'),(26,2,'2019-05-04 23:58:22','0000-00-00 00:00:00'),(27,2,'2019-05-05 00:27:46','0000-00-00 00:00:00'),(28,2,'2019-05-05 00:28:45','0000-00-00 00:00:00'),(29,1,'2019-05-05 00:30:07','0000-00-00 00:00:00'),(30,1,'2019-05-05 00:34:26','0000-00-00 00:00:00'),(31,1,'2019-05-05 11:18:03','0000-00-00 00:00:00'),(32,2,'2019-05-05 12:31:15','0000-00-00 00:00:00'),(33,2,'2019-05-05 19:06:58','0000-00-00 00:00:00'),(34,2,'2019-05-05 19:20:57','0000-00-00 00:00:00'),(35,1,'2019-05-05 19:37:45','0000-00-00 00:00:00'),(36,1,'2019-05-06 00:34:57','0000-00-00 00:00:00'),(37,1,'2019-05-06 00:37:33','0000-00-00 00:00:00'),(38,2,'2019-05-06 00:44:49','0000-00-00 00:00:00'),(39,2,'2019-05-06 02:45:40','0000-00-00 00:00:00'),(40,1,'2019-05-06 11:02:57','0000-00-00 00:00:00'),(41,1,'2019-05-06 15:11:36','0000-00-00 00:00:00');
+insert  into `historial`(`id`,`fhconexion`,`fhdesconexion`,`usuario`,`nivel`) values (123,'2019-05-10 00:47:50','2019-05-10 00:47:50','ADMIN','ADMINISTRADOR'),(124,'2019-05-10 00:50:57',NULL,'SKULL','ADMINISTRADOR'),(125,'2019-05-10 00:54:57','0000-00-00 00:00:00','ADMIN','ADMINISTRADOR'),(126,'2019-05-10 01:04:12',NULL,'ADMIN','ADMINISTRADOR'),(127,'2019-05-10 01:06:56',NULL,'PEDRITO','ADMINISTRADOR'),(128,'2019-05-10 01:07:41',NULL,'ADMIN','ADMINISTRADOR'),(129,'2019-05-10 08:52:59',NULL,'ADMIN','ADMINISTRADOR'),(130,'2019-05-10 09:54:51',NULL,'ADMIN','ADMINISTRADOR'),(131,'2019-05-10 10:09:33',NULL,'ADMIN','ADMINISTRADOR'),(132,'2019-05-10 10:14:55',NULL,'ADMIN','ADMINISTRADOR'),(133,'2019-05-11 19:00:16',NULL,'ADMIN','ADMINISTRADOR'),(134,'2019-05-11 19:00:25',NULL,'ADMIN','ADMINISTRADOR'),(135,'2019-05-11 19:00:47',NULL,'ADMIN','ADMINISTRADOR'),(136,'2019-05-11 19:01:04',NULL,'ADMIN','ADMINISTRADOR'),(137,'2019-05-11 19:01:26',NULL,'ADMIN','ADMINISTRADOR'),(138,'2019-05-11 19:04:19',NULL,'ADMIN','ADMINISTRADOR'),(139,'2019-05-11 21:57:12',NULL,'ADMIN','ADMINISTRADOR'),(140,'2019-05-12 23:16:56',NULL,'ADMIN','ADMINISTRADOR'),(141,'2019-05-12 23:24:49',NULL,'ADMIN','ADMINISTRADOR');
 
 /*Table structure for table `marca` */
 
@@ -225,11 +233,11 @@ CREATE TABLE `mesa` (
   `ubicacion` varchar(50) DEFAULT NULL,
   `sillas` int(9) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 /*Data for the table `mesa` */
 
-insert  into `mesa`(`id`,`descripcion`,`ubicacion`,`sillas`) values (1,'NDA QUE MOSTRAR','EN EL CIELO',4),(2,'MESA REDONDA','EN EL CENTRO',5);
+insert  into `mesa`(`id`,`descripcion`,`ubicacion`,`sillas`) values (5,'MESA REDONDA','EN EL CENTRO\r\n\r\n',8),(8,'MESA REDONDA','ALKSJDFñLK',2),(9,'SDFASDFA','ASDFASDFA',2),(11,'DSDF','ASDF',8);
 
 /*Table structure for table `producto` */
 
@@ -266,9 +274,11 @@ CREATE TABLE `proveedor` (
   `direccion` varchar(40) DEFAULT NULL,
   `ciudad` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 /*Data for the table `proveedor` */
+
+insert  into `proveedor`(`id`,`ruc`,`nombre`,`telefono`,`direccion`,`ciudad`) values (1,'465465','sandro',46546,'asdfasdf',1);
 
 /*Table structure for table `sabores` */
 
@@ -304,12 +314,13 @@ CREATE TABLE `usuario` (
   `usuario` varchar(30) NOT NULL,
   `pass` varchar(100) NOT NULL,
   `nivel` varchar(15) NOT NULL,
+  `estado` varchar(8) DEFAULT 'inactivo',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 /*Data for the table `usuario` */
 
-insert  into `usuario`(`id`,`usuario`,`pass`,`nivel`) values (1,'PEDRO','37693cfc748049e45d87b8c7d8b9aacd','Administrador'),(2,'PEDRO','37693cfc748049e45d87b8c7d8b9aacd','Administrador'),(4,'JULIA','eccbc87e4b5ce2fe28308fd9f2a7baf3','USUARIO');
+insert  into `usuario`(`id`,`usuario`,`pass`,`nivel`,`estado`) values (1,'ADMIN','202cb962ac59075b964b07152d234b70','ADMINISTRADOR','inactivo'),(7,'JULIA','202cb962ac59075b964b07152d234b70','USUARIO','inactivo'),(8,'PEDRITO','202cb962ac59075b964b07152d234b70','ADMINISTRADOR','inactivo'),(9,'SKULL','202cb962ac59075b964b07152d234b70','ADMINISTRADOR','inactivo'),(10,'ING.INFO','bcbe3365e6ac95ea2c0343a2395834dd','ADMINISTRADOR','inactivo');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

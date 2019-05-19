@@ -6,33 +6,9 @@
           <meta name="theme-color" content="black">
           <link rel="icon" href="../img/clientes.png"/>
 
-          <!-- CSS REQUERIDOS -->
-          <!-- Bootstrap -->
-          <link rel="stylesheet" href="../bt/bootstrap.min.css">
-          <!-- Datatables -->
-          <link rel="stylesheet" href="../dt/datatables.min.css">
-          <!-- Alertify -->
-          <link rel="stylesheet" href="../alertify/alertify.min.css">
-          <link rel="stylesheet" href="../alertify/default.min.css">
-          <!-- Font-Awesome -->
-          <link rel="stylesheet" href="../font-awesome/font-awesome.min.css">
+          <?php require_once "../plantilla/linktablas.php"; ?>
 
-          <!-- JS REQUERIDOS -->
-          <!-- JQuery -->
-          <script src="../js/jquery-3.3.1.min.js"></script>
-          <!-- Boostrap -->
-          <script src="../bt/bootstrap.min.js"></script>
-          <!-- Datatables -->
-          <script src="../dt/datatables.min.js"></script>
-          <!-- Datatables Botones-->
-          <script src="../dt/botones/dataTables.buttons.min.js"></script>
-          <script src="../dt/botones/buttons.html5.min.js"></script>
-          <script src="../dt/botones/jszip.min.js"></script>
-          <script src="../dt/botones/buttons.print.min.js"></script>
-          <script src="../dt/botones/pdfmake.min.js"></script>
-          <script src="../dt/botones/vfs_fonts.js"></script>
-          <!-- Alertify -->
-          <script src="../alertify/alertify.min.js"></script>
+
           <?php
                if (!isset($_GET["accion"])){
                     header("Location: malaidea.php");
@@ -45,28 +21,31 @@
                     require_once("../servicios/conexion.php");
           		$conex = conexion();
      			$id = $_GET['id'];
-     			$sql = "SELECT * FROM clientes WHERE idcliente = '$id'";
+     			$sql = "SELECT * FROM cliente WHERE id = '$id'";
      			$res = mysqli_query($conex, $sql);
      			$reg = mysqli_fetch_array($res);
      		}
      	?>
-          <div class="container">
+      <!-- cabecer -->
+      <?php  require_once "../plantilla/cabecera.php";?>
+
+          <div class="container gris">
                <h2 class="text-center mt-3" id="titulo"></h2>
-               <div class="row" style="background: rgba(0, 0, 0, 0.99);">
+               <div class="row" id="row">
                     <div class="col">
                          <!-- <form id="formulario" action="../servicios/clientesServicios.php" method="post"> -->
                          <!-- <form name="form_clientes" onsubmit="return false" action="return false"> -->
                          <form id="form_clientes">
                               <!-- PRIMERA FILA -->
-                  <div class="form-group row mt-3">
-                       <div class="col-12 col-md-6 mb-3">
-                            <label class="font-weight-bold" for="ruc">R.U.C.</label>
-                            <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ingrese R.U.C." onkeypress="return validarRuc(event)" maxlength="15" autofocus value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
-                       </div>
-                       <div class="col-12 col-md-6">
-                            <label class="font-weight-bold" for="razon">RAZÓN SOCIAL</label>
-                            <input type="text" class="form-control text-uppercase" name="razon" id="razon" placeholder="Ingrese Razón Social" maxlength="50" value="<?php echo isset($reg['razonsocial']) ? $reg['razonsocial'] : '';?>">
-                       </div>
+                              <div class="form-group row mt-3">
+                                   <div class="col-12 col-md-6 mb-3">
+                                        <label class="font-weight-bold" for="ruc">R.U.C.</label>
+                                        <input type="text" class="form-control" name="ruc" id="ruc" placeholder="Ingrese R.U.C." onkeypress="return validarRuc(event)" maxlength="15" autofocus value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
+                                   </div>
+                                   <div class="col-12 col-md-6">
+                                        <label class="font-weight-bold" for="nombre">NOMBRE</label>
+                                        <input type="text" class="form-control text-uppercase" name="nombre" id="nombre" placeholder="Ingrese nombre" maxlength="50" value="<?php echo isset($reg['nombre']) ? $reg['nombre'] : '';?>">
+                                   </div>
 
                               </div>
 
@@ -85,15 +64,22 @@
                               <!-- TERCERA FILA -->
                               <div class="form-group row">
                                    <div class="col-12 col-md-6 mb-3">
-                                        <label class="font-weight-bold" for="movil">MÓVIL</label>
-                                        <input type="text" class="form-control" name="movil" id="movil" placeholder="Ingrese N° de móvil" maxlength="10" value="<?php echo isset($reg['movil']) ? $reg['movil'] : '';?>">
+                                        <label class="font-weight-bold" for="email">EMAIL</label>
+                                        <input type="text" class="form-control" name="email" id="email" placeholder="Ingrese Email" value="<?php echo isset($reg['email']) ? $reg['email'] : '';?>">
                                    </div>
                                    <div class="col-12 col-md-6">
-                                        <label class="font-weight-bold" for="tipo">TIPO DE CLIENTE</label>
-                                        <select name="tipo" id="tipo" class="form-control" required>
-								     <option value="">Seleccione un ítem</option>
-								     <option value="MINORISTA">MINORISTA</option>
-								     <option value="MAYORISTA">MAYORISTA</option>
+                                        <label class="font-weight-bold" for="ciudad">CIUDAD</label>
+                                        <select name="ciudad" id="ciudad" class="form-control" required>
+								     <?php
+                                                  require_once("../servicios/conexion.php");
+                                                  $con = conexion();
+                                                  $sql = "SELECT * FROM ciudad";
+                                                  $res = mysqli_query($con, $sql);
+                                             foreach ($res as $row) {
+                                                  echo "<option value='".$row['id']."'>".$row['ciudad']."</option>";
+                                             }
+                                              ?>
+                                             <!-- <option value="1">Concepcion</option> -->
 							     </select>
                                    </div>
                               </div>
@@ -101,21 +87,21 @@
                               <!-- CUARTA FILA -->
      					<div class="form-group row">
      						<div class="col-12 col-md-4 mb-2">
-     							<button class="btn btn-success btn-block" type="button" onclick="validarCampos();"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
+     							<button class="btn gris btn-block" type="button" onclick="validarCampos();"><i class="fa fa-floppy-o" aria-hidden="true"></i> Guardar</button>
      						</div>
 
      						<div class="col-12 col-md-4 mb-2">
-     							<button class="btn btn-danger btn-block" type="button" onclick="cancelar();"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
+     							<button class="btn gris btn-block" type="button" onclick="cancelar();"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
      						</div>
 
      						<div class="col-12 col-md-4 mb-2">
-     							<button type="button" class="btn btn-primary btn-block" onclick="window.location.href='clientes_lista.php';"><i class="fa fa-table"></i> Ir a lista de clientes</button>
+     							<button type="button" class="btn gris btn-block" onclick="window.location.href='clientes_lista.php';"><i class="fa fa-table"></i> Ir a lista de clientes</button>
      						</div>
      					</div>
-                <input type="hidden" name="accion" id="accion">
-                <input type="hidden" name="id" id="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>">
-                <input type="hidden" name="rucSinModif" id="rucSinModif" value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
-                <input type="hidden" name="tipoCli" id="tipoCli" value="<?php echo isset($reg['tipo']) ? $reg['tipo'] : '';?>">
+                              <input type="hidden" name="accion" id="accion">
+                              <input type="hidden" name="id" id="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>">
+                              <input type="hidden" name="rucSinModif" id="rucSinModif" value="<?php echo isset($reg['ruc']) ? $reg['ruc'] : '';?>">
+                              <input type="hidden" name="tipoCli" id="tipoCli" value="<?php echo isset($reg['tipo']) ? $reg['tipo'] : '';?>">
                          </form>
                     </div>
                </div>
@@ -126,7 +112,7 @@
                     if ($_GET["accion"] == "N"){
                          echo "<script>
                               document.getElementById('accion').value = 'N';
-                              document.getElementById('titulo').innerHTML = 'ALTA DE CLIENTE';
+                              document.getElementById('titulo').innerHTML = 'AGREGAR CLIENTE';
                               document.title = 'Alta de cliente';
                          </script>";
                     }else if ($_GET["accion"] == "M"){
@@ -148,17 +134,17 @@
 
                function registrar(){
                     ruc = $("#ruc").val();
-                    raz = $("#razon").val();
+                    nom = $("#nombre").val();
                     dir = $("#direccion").val();
                     tel = $("#telefono").val();
-                    mov = $("#movil").val();
-                    tip = $("#tipo").val();
+                    ema = $("#email").val();
+                    ciu = $("#ciudad").val();
                     acc = $("#accion").val();
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
                          url: "../servicios/clientesServicios.php",
-                         data: "ruc=" + ruc + "&razon=" + raz + "&direccion=" + dir + "&telefono=" + tel + "&movil=" + mov + "&tipo=" + tip + "&accion=" + acc,
+                         data: "ruc=" + ruc + "&nombre=" + nom + "&direccion=" + dir + "&telefono=" + tel + "&email=" + ema + "&ciudad=" + ciu + "&accion=" + acc,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 1){
                               alertify.warning("El R.U.C. ingresado ya existe. Cambie por otro");
@@ -174,11 +160,11 @@
 
                function limpiarCampos(){
                     $("#ruc").val("");
-                    $("#razon").val("");
+                    $("#nombre").val("");
                     $("#direccion").val("");
                     $("#telefono").val("");
-                    $("#movil").val("");
-                    $("#tipo").val("");
+                    $("#email").val("");
+                    $("#ciudad").val("");
                     $("#ruc").focus();
                }
 
@@ -186,12 +172,12 @@
                     if ($("#ruc").val().length < 6){
                          alertify.error("Ingrese como mínimo 6 dígitos en R.U.C.");
                          $("#ruc").focus();
-                    }else if ($("#razon").val().length < 5){
-                         alertify.error("Ingrese como mínimo 5 caracteres en Razón Social");
-                         $("#razon").focus();
-                    }else if ($("#tipo").val() == ""){
-                         alertify.error("Seleccione el Tipo de cliente");
-                         $("#tipo").focus();
+                    }else if ($("#nombre").val().length < 5){
+                         alertify.error("Ingrese como mínimo 5 caracteres en NOMBRE");
+                         $("#nombre").focus();
+                    }else if ($("#ciudad").val() == ""){
+                         alertify.error("Seleccione la CIUDAD");
+                         $("#ciudad").focus();
                     }else{
                          if ($("#accion").val() == "N"){
                               registrar();
@@ -225,7 +211,7 @@
                function seleccionarTipoCliente(){
                     t = $("#tipoCli").val();
                     if (t != ""){
-                         sel = document.getElementById("tipo");
+                         sel = document.getElementById("ciudad");
                          for (var i = 0; i < sel.length; i++) {
                               if(sel[i].value == t){
                                    sel.selectedIndex = i;
@@ -237,11 +223,11 @@
 
                function actualizar(){
                     ruc = $("#ruc").val();
-                    raz = $("#razon").val();
+                    nom = $("#nombre").val();
                     dir = $("#direccion").val();
                     tel = $("#telefono").val();
-                    mov = $("#movil").val();
-                    tip = $("#tipo").val();
+                    ema = $("#email").val();
+                    ciu = $("#ciudad").val();
                     acc = $("#accion").val();
                     rsm = $("#rucSinModif").val();
                     id  = $("#id").val();
@@ -249,7 +235,7 @@
                          type: "POST",
                          dataType: 'html',
                          url: "../servicios/clientesServicios.php",
-                         data: "ruc=" + ruc + "&razon=" + raz + "&direccion=" + dir + "&telefono=" + tel + "&movil=" + mov + "&tipo=" + tip + "&accion=" + acc + "&rsm=" + rsm + "&id=" + id,
+                         data: "ruc=" + ruc + "&nombre=" + nom + "&direccion=" + dir + "&telefono=" + tel + "&email=" + ema + "&ciudad=" + ciu + "&accion=" + acc + "&rsm=" + rsm + "&id=" + id,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 3){
                               alertify.warning("El R.U.C. pertenece a otro cliente. Cambie por otro");

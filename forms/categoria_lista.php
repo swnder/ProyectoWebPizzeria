@@ -9,19 +9,15 @@
     <?php include "../plantilla/linktablas.php"; ?>
 
   </head>
-  
-
  <body>
     <!-- cabecera -->
   <?php require_once "../plantilla/cabecera.php" ?>
-
   <!-- tabla de la vista -->
- <br><br><br>
   <div class="container bg-dark mt-5" id="tabla">
       <div class="table-responsive" >
             <!-- cabecera del la tabla -->
            <h1 class="text-center mt-3">Lista de Categoria</h1>
-           <table class="table table-bordered display nowrap stripe"  id="tablaCiudad" style="width:100%">
+           <table class="table table-bordered display nowrap stripe mb-3"  id="tablaCiudad" style="width:100%">
                 <thead>
                      <tr>
                           <th hidden>ID</th>

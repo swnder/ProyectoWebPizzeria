@@ -39,9 +39,9 @@
           aria-haspopup="true" aria-expanded="false">Caja
         </a>
         <div class="dropdown-menu dropdown-default" aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_am.php?accion=N"><i class="fa fa-plus-circle"> Apertura de Caja</i> </a>
-          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_am.php?accion=M"><i class="fa fa-times-circle"> Cierre de Caja</i></a>
-          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/clientes_lista.php"><i class="fa fa-list-ol"> Lista Movimiento</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/"><i class="fa fa-plus-circle"> Apertura de Caja</i> </a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/"><i class="fa fa-times-circle"> Cierre de Caja</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/cajasAcciones_lista.php"><i class="fa fa-list-ol"> Lista Movimiento</i></a>
         </div>
       </li>
     </ul>
@@ -59,10 +59,11 @@
         <!-- menu desplegable lado derecho -->
         <div class="dropdown-menu dropdown-menu-right dropdown-default"
           aria-labelledby="navbarDropdownMenuLink-333">
-          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/ciudadlista.php"><i class="fa fa-city"> Ciudad</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/ciudadlista.php"><i class="fa-city"> Ciudad</i></a>
           <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/mesas_lista.php"> <i class="fa fa-table"> Mesas</i></a>
           <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/categoria_lista.php"> <i class="fa fa-star"> Categoria</i></a>
-          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/empleados_lista.php"><i class="fa fa-user-tie"> Empleados</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/sabores_lista.php"> <i class="fa fa-star"> Sabores</i></a>
+          <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/empleados_lista.php"><i class="fa fa-people-carry"> Empleados</i></a>
           <a class="dropdown-item" href="/ProyectoWebPizzeria/forms/usuarios_lista.php"><i class="fa fa-user"> Usuarios</i></a>
         </div>
       </li>
@@ -88,3 +89,4 @@
    </div>
 
 </nav>
+<br><br><br>

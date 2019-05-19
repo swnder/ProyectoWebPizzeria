@@ -5,10 +5,10 @@
      $opc = $_POST["accion"];
      if ($opc == "N" or $opc == "M"){
 		//Capturar los datos enviados por ajax
-		$id = $_POST["id"];
-		$user = $_POST["usuario"];
-		$nivel = strtoupper($_POST["nivel"]);
-    $pass = MD5($_POST["pass"]);
+      		$id = $_POST["id"];
+      		$user = $_POST["usuario"];
+      		$nivel = strtoupper($_POST["nivel"]);
+          $pass = MD5($_POST["pass"]);
 
 		if ($opc == "M"){
 			// $rsm = $_POST["rsm"];
@@ -49,7 +49,7 @@
 		}
 	}else if ($opc == "E"){	//ELIMINAR
           $id = $_POST["id"];
-          
+
           $sql = "DELETE FROM usuario WHERE id= '$id'";
 		      $res = mysqli_query($conex, $sql);
           // CONSULTA PARA VERIFICAR QUE BORRA EL ID

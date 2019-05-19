@@ -6,58 +6,17 @@
     <meta name="theme-color" content="black">
     <title>Sistema Pizzeria/Lista_Ciudad</title>
     <link rel="icon" href="../img/pizzeria.ico"/>
-    <!-- CSS REQUERIDOS -->
-    <link rel="stylesheet" href="../css/misestilos1.css">
-    <link rel="stylesheet" href="../alertify/alertify.min.css">
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="../bt/bootstrap.min.css">
-    <link rel="stylesheet" href="../bt/mdb.css">
-    <!-- Datatables -->
-    <link rel="stylesheet" href="../dt/datatables.min.css">
-    <!-- Alertify -->
-    <link rel="stylesheet" href="../alertify/alertify.min.css">
-    <link rel="stylesheet" href="../alertify/default.min.css">
-    <!-- Font-Awesome -->
-    <link rel="stylesheet" href="../font-awesome/font-awesome.min.css">
-
-    <!-- JS REQUERIDOS -->
-    <!-- JQuery -->
-    <script src="../js/jquery-3.3.1.min.js"></script>
-    <!-- Boostrap -->
-    <script src="../bt/bootstrap.min.js"></script>
-    <!-- Datatables -->
-    <script src="../dt/datatables.min.js"></script>
-    <!-- Datatables Botones-->
-    <script src="../dt/botones/dataTables.buttons.min.js"></script>
-    <script src="../dt/botones/buttons.html5.min.js"></script>
-    <script src="../dt/botones/jszip.min.js"></script>
-    <script src="../dt/botones/buttons.print.min.js"></script>
-    <script src="../dt/botones/pdfmake.min.js"></script>
-    <script src="../dt/botones/vfs_fonts.js"></script>
-    <!-- Alertify -->
-    <script src="../alertify/alertify.min.js"></script>
-
+    <?php include "../plantilla/linktablas.php"; ?>
   </head>
-  <!-- <body class="fixed-sn light-blue-skin" style="
-        background: url('img/pizza2.jpg') no-repeat fixed center;
-        background-size: cover;
-        font-family: 'Roboto',Sans-Serif;"> -->
-
- <body style="
-       background: url('../img/pizza2.jpg') no-repeat fixed center;
-       background-size: cover;
-       font-family: 'Roboto',Sans-Serif;">
-
-
+   <body >
        <!--Navbar -->
        <?php require_once "../plantilla/cabecera.php"; ?>
   <!-- tabla de la vista -->
- <br><br><br>
-  <div class="container bg-dark mt-5" id="tabla">
+   <div class="container bg-dark mt-5" id="tabla">
       <div class="table-responsive" >
             <!-- cabecera del la tabla -->
            <h1 class="text-center mt-3">Lista de Cuidades</h1>
-           <table class="table table-bordered display nowrap stripe"  id="tablaCiudad" style="width:100%">
+           <table class="table table-bordered display nowrap stripe mb-3"  id="tablaCiudad" style="width:100%">
                 <thead>
                      <tr>
                           <th hidden>ID</th>

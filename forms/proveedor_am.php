@@ -83,7 +83,7 @@
      							<button class="btn gris btn-block" type="button" onclick="cancelar();"><i class="fa fa-ban" aria-hidden="true"></i> Cancelar</button>
      						</div>
      						<div class="col-12 col-md-4 mb-2">
-     							<button type="button" class="btn gris btn-block" onclick="window.location.href='proveedor_lista.php';"><i class="fa fa-table"></i> Ir a lista de clientes</button>
+     							<button type="button" class="btn gris btn-block" onclick="window.location.href='proveedor_lista.php';"><i class="fa fa-table"></i> Ir a lista de Proveedores</button>
      						</div>
      					</div>
                               <input type="hidden" name="accion" id="accion">

@@ -9,12 +9,10 @@
      </head>
      <body >
        <?php require_once "../plantilla/cabecera.php" ?>
-       <br><br><br>
-
-           <div class="container" id="tabla">
-               <div class="table-responsive" >
-                    <h2 class="text-center mt-5">EMPLEADOS</h2>
-                    <table class="table table-bordered display nowrap stripe" id="tablaproveedor" style="width:100%">
+         <div class="container mt-5" id="tabla" >
+               <div class="table-responsive " >
+                    <h2 class="text-center mt-3">EMPLEADOS</h2>
+                    <table class="table table-bordered display nowrap stripe " id="tablaproveedor" style="width:100%">
                          <thead>
                               <tr>
                                    <th hidden>ID</th>
@@ -37,11 +35,10 @@
                               <?php
                                    require_once("../servicios/conexion.php");
                                    $conex = conexion();
-                                   $sql = "SELECT e.id, u.usuario, e.foto,e.ci, CONCAT(e.nombre, ' ', e.apellido) as nombreyapellido, e.fechanaci,e.nacionalidad, c.ciudad, e.barrio,e.telefono, e.cargo,e.telefono,e.cargo,e.direccion
+                                   $sql = "SELECT e.id, u.usuario, e.foto,e.ci, CONCAT(e.nombre,' ', e.apellido) as nombreyapellido, e.fechanaci,e.nacionalidad, c.ciudad, e.barrio,e.telefono, e.cargo,e.telefono,e.cargo,e.direccion
                                    FROM empleado e
                                    INNER JOIN usuario u ON u.id = e.usuario
-                                   INNER JOIN ciudad c ON c.id = e.ciudad;
-";
+                                   INNER JOIN ciudad c ON c.id = e.ciudad";
                                    $rs = mysqli_query($conex, $sql);
                                    foreach ($rs as $fila) {
                                         echo "<tr>";
@@ -155,7 +152,7 @@
                                                   '20%'
 
                                              ],
-                                             
+
                                              doc['footer']= (function(page,pages){
                                                   return {
                                                        columns:[
@@ -184,8 +181,8 @@
                                              columns: [1,3,4,5,6,7,8,9,10,11]
                                         }
                                    },
-                                   {className:"btn gris", text: "<i class='fa fa-plus' aria-hidden='true'> Nuevo Proveedor </i>", action: function (e, dt, node, config){
-                          		     window.location="proveedor_am.php?accion=N";
+                                   {className:"btn gris", text: "<i class='fa fa-plus' aria-hidden='true'> Nuevo Empleado </i>", action: function (e, dt, node, config){
+                          		     window.location="empleados_Abm.php?accion=N";
                            		}}
                          ]
                     } );
@@ -208,7 +205,7 @@
                     alertify.confirm().set("labels", {ok:"SI", cancel:"NO"});
                     alertify.confirm().set("defaultFocus", "cancel");
                     alertify.dialog("confirm").set({transition:"flipx"});
-                    alertify.confirm("Eliminar registro", "¿Desea eliminar el registro del Proveedor?",
+                    alertify.confirm("Eliminar registro", "¿Desea eliminar el registro del Empleado?",
                          function(){ //SI
                               eliminar(id);
                          },
@@ -219,14 +216,15 @@
                }
 
                function eliminar(id){
+                   alert("holi "+id);
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
-                         url: "../servicios/proveedorServicios.php",
+                         url: "../servicios/EmpleadoServicios.php",
                          data: "id=" + id + "&accion=E",
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 5){
-                              alertify.alert("Atención", "El registro del cliente fue Eliminado",
+                              alertify.alert("Atención", "El registro del  fue Eliminado",
                                    function(){
                                         location.reload();
                                    }
@@ -247,7 +245,7 @@
                               //Obtener el id (columna oculta)
                               fi = this.rowIndex;
                               id = tabla.rows[fi].cells[0].innerHTML;
-                              window.location="proveedor_am.php?accion=M&id="+id;
+                              window.location="empleados_Abm.php?accion=M&id="+id;
                          }
                     }
                }

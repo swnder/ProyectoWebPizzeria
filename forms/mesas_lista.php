@@ -7,14 +7,11 @@
           <link rel="icon" href="../img/mozo.ico"/>
 
           <?php require_once "../plantilla/linktablas.php";?>
-
      </head>
      <body >
      <!-- cabecera -->
       <?php require_once "../plantilla/cabecera.php" ?>
-
 <!-- datatable -->
-<br><br><br>
           <div class="container bg-dark mt-5" id="tabla">
                <div class="table-responsive">
                  <!-- cabecera de la tabla -->
