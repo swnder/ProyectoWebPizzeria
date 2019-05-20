@@ -1,7 +1,6 @@
 <?php
      require("conexion.php");
      $conex = conexion();
-
      $opc = $_POST["accion"];
      if ($opc == "N" or $opc == "M"){
 		//Capturar los datos enviados por ajax

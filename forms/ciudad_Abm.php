@@ -17,14 +17,14 @@
      <body class="bg-dark text-white">
 
           <?php
-               if (isset($_GET['id'])){ //Solo para modificar
-                    require_once("../servicios/conexion.php");
-          		$conex = conexion();
+          if (isset($_GET['id'])){ //Solo para modificar
+            require_once("../servicios/conexion.php");
+          $conex = conexion();
      			$id = $_GET['id'];
      			$sql = "SELECT * FROM ciudad WHERE id = '$id'";
      			$res = mysqli_query($conex, $sql);
      			$reg = mysqli_fetch_array($res);
-     		}
+          }
      	?>
           <div class="container gris">
                <h2 class="text-center mt-3 font-weight-bold" id="titulo"></h2>

@@ -77,3 +77,6 @@ body{
   background: rgba(56, 89, 73, 0.59);
   text: white!important;
 }
+a:hover{
+  background: rgba(56, 89, 73, 0.59)!important;
+}

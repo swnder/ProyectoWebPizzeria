@@ -10,7 +10,7 @@
              }
         ?>
 
-    <title>Probando</title>
+    <title>Mala Idea</title>
   </head>
   <body>
 
