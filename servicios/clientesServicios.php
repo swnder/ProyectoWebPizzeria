@@ -6,11 +6,11 @@
      if ($opc == "N" or $opc == "M"){
 		//Capturar los datos enviados por ajax
 		$ruc = $_POST["ruc"];
-		$raz = strtoupper($_POST["razon"]);
+		$nom = strtoupper($_POST["nombre"]);
 		$dir = strtoupper($_POST["direccion"]);
 		$tel = $_POST["telefono"];
-		$mov = $_POST["movil"];
-		$tip = $_POST["tipo"];
+		$ema = $_POST["email"];
+		$ciu = $_POST["ciudad"];
 		if ($opc == "M"){
 			$rsm = $_POST["rsm"];
 			$id  = $_POST["id"];
@@ -20,13 +20,13 @@
 
      if ($opc == "N"){	//NUEVO
 		//VERIFICAR QUE RUC NO EXISTA
-		$sql = "SELECT ruc FROM clientes WHERE ruc = '$ruc'";
+		$sql = "SELECT ruc FROM cliente WHERE ruc = '$ruc'";
 		$res = mysqli_query($conex, $sql);
 		$num_reg = mysqli_num_rows($res);
 		if ($num_reg > 0){
 			echo 1;
 		}else{
-               $sql = "INSERT INTO clientes (ruc, razonsocial, direccion, telefono, movil, tipo) VALUES ('$ruc', '$raz', '$dir', '$tel', '$mov', '$tip')";
+               $sql = "INSERT INTO cliente (ruc, nombre, direccion, telefono, email, ciudad) VALUES ('$ruc', '$nom', '$dir', '$tel', '$ema', '$ciu')";
 			$res = mysqli_query($conex, $sql);
 			echo 2;
 		}
@@ -34,7 +34,7 @@
           $grabar = true;
 		if ($ruc != $rsm){ //Se modifico el Nº de RUC
 			//VERIFICAR QUE RUC NO EXISTA
-			$sql = "SELECT ruc FROM clientes WHERE ruc = '$ruc'";
+			$sql = "SELECT ruc FROM cliente WHERE ruc = '$ruc'";
 			$resul = mysqli_query($conex, $sql);
 			$num_reg = mysqli_num_rows($resul);
 			if ($num_reg > 0){
@@ -43,13 +43,13 @@
 	       	}
 		}
 		if ($grabar == true){
-			$sql = "UPDATE clientes SET ruc='$ruc', razonsocial='$raz', direccion='$dir', telefono='$tel', movil='$mov', tipo='$tip' WHERE idcliente='$id'";
+			$sql = "UPDATE cliente SET ruc='$ruc', nombre='$nom', direccion='$dir', telefono='$tel', email='$ema', ciudad='$ciu' WHERE id='$id'";
 			$resul = mysqli_query($conex, $sql);
 			echo 4;
 		}
 	}else if ($opc == "E"){	//ELIMINAR
           $id = $_POST["id"];
-          $sql = "DELETE FROM clientes WHERE idcliente='$id'";
+          $sql = "DELETE FROM cliente WHERE id='$id'";
 		$res = mysqli_query($conex, $sql);
           echo 5;
      }
