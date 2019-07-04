@@ -3,7 +3,7 @@
         $host     = "localhost";
         $db       = "webpizzeria";
         $usuario  = "root";
-        $password = "123456";
+        $password = "";
         $conexion = null;
 
         $conexion = mysqli_connect($host, $usuario, $password, $db);
