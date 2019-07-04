@@ -4,6 +4,7 @@
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta name="theme-color" content="black">
+            <link rel="icon" href="../img/pizzeria.ico"/>
       <?php require_once "../plantilla/linktablas.php";?>
           <?php
                if (!isset($_GET["accion"])){
@@ -40,12 +41,12 @@
 
                                    <div class="col-12 col-md-4 mb-3">
                                         <label class="font-weight-bold" for="nombre">Nombre</label>
-                                        <input type="text" class="form-control text-uppercase" name="nombre" id="nombre" placeholder="Ingrese Nombre Completo" maxlength="50" pattern="^[A-Za-z]+$" value="<?php echo isset($reg['nombre']) ? $reg['nombre'] : '';?>">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Ingrese Nombre Completo" maxlength="50" pattern="^[A-Za-z]+$" value="<?php echo isset($reg['nombre']) ? $reg['nombre'] : '';?>">
                                    </div>
 
                                    <div class="col-12 col-md-4 mb-3">
                                         <label class="font-weight-bold" for="apellido">Apellido</label>
-                                        <input type="text" class="form-control text-uppercase" name="apellido" id="apellido" pattern="^[A-Za-z]+$" placeholder="Ingrese Apellido Completo" maxlength="50" value="<?php echo isset($reg['apellido']) ? $reg['apellido'] : '';?>">
+                                        <input type="text" class="form-control " name="apellido" id="apellido" pattern="^[A-Za-z]+$" placeholder="Ingrese Apellido Completo" maxlength="50" value="<?php echo isset($reg['apellido']) ? $reg['apellido'] : '';?>">
                                    </div>
 
 
@@ -82,18 +83,17 @@
                                 </div>
                                 <div class="col-12 col-md-2 mb-3">
                                   <label for="ciudad" class="col-sm-4 control-label">CIUDAD:</label>
-
-                                    <select id="idciudad" name="idciudad" class="form-control">
-                                      <?php
-                                        require_once("../servicios/conexion.php");
-                                        $con = conexion();
-                                        $sql = "SELECT * FROM ciudad";
-                                        $res = mysqli_query($con, $sql);
-                                                    foreach ($res as $row) {
-                                                        echo "<option value='".$row["id"]."'>".$row["ciudad"]."</option>";
-                                                    }
-                                      ?>
-                                    </select>
+                                  <select id="idciudad" name="idciudad" class="form-control">
+                                    <?php
+                                      require_once("../servicios/conexion.php");
+                                      $con = conexion();
+                                      $sql = "SELECT * FROM ciudad";
+                                      $res = mysqli_query($con, $sql);
+                                        foreach ($res as $row) {
+                                            echo "<option value='".$row["id"]."'>".$row["ciudad"]."</option>";
+                                        }
+                                    ?>
+                                  </select>
                                   </div>
                                 <div class="col-12 col-md-3 mb-3">
                                   <label class="font-weight-bold" for="cargo">Cargo</label>
@@ -131,7 +131,8 @@
                    					</div>
                               <input type="hidden" name="accion" id="accion">
                               <input type="hidden" name="id" id="id" value="<?php echo isset($_GET['id']) ? $_GET['id'] : '';?>">
-                              <input type="hidden" name="idCiu" id="idCiu" value="<?php echo isset($reg['ciudad']) ? $reg['ciudad'] : '';?>">
+
+                              <input type="hidden" name="rucSinModif" id="rsm" value="<?php echo isset($reg['ci']) ? $reg['ci'] : '';?>">
 
                          </form>
                     </div>
@@ -151,6 +152,9 @@
                               document.getElementById('accion').value = 'M';
                               document.getElementById('titulo').innerHTML = 'MODIFICAR EMPLEADOS';
                               document.title = 'Modificar Empleados';
+                              document.getElementById('ci').readOnly=true;
+                              document.getElementById('usuario').disabled;
+
                          </script>";
                     }
                }
@@ -171,16 +175,19 @@
 
                          type: "POST",
                          dataType: 'html',
-                         url: "../servicios/EmpleadosServicios.php",
+                         url: "../servicios/EmpleadoServicios.php",
                          //
                          // data: "ruc=" + ruc + "&razon=" + raz + "&telefono=" + tel + "&direccion=" + dir + "&idciudad=" + ciu +"&accion=" + acc,
                          data: datos,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
-                         if (resp == 1){
+                         if (resp == 2){
                               alertify.warning("El C.I. ingresado ya existe. Cambie por otro");
                               $("#ci").focus();
 
-                         }else if (resp == 2){
+                         }else if (resp == 1){
+                           alertify.warning("El Usuario ingresado ya existe. Cambie por otro");
+                           $("#usuario").focus();
+                         }else if (resp == 3){
                               alertify.success("Registro guardado con éxito");
                               limpiarCampos();
                          }
@@ -273,28 +280,22 @@
 
 
                function actualizar(){
-                    ruc = $("#ruc").val();
-                    raz = $("#razon").val();
-                    tel = $("#telefono").val();
-                    dir = $("#direccion").val();
-                    ciu = $("#idciudad").val();
-                    acc = $("#accion").val();
-                    rsm = $("#rucSinModif").val();
-                    id  = $("#id").val();
-
+                    var datos = $("#form_empleados").serialize();
+                     //  alert(datos);
+                     // return false;
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
-                         url: "../servicios/proveedorServicios.php",
-                         data: "ruc=" + ruc + "&razon=" + raz + "&telefono=" + tel + "&direccion=" + dir + "&idciudad=" + ciu +  "&accion=" + acc + "&rsm=" + rsm + "&id=" + id,
+                         url: "../servicios/EmpleadoServicios.php",
+                         data: datos,
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
-                         if (resp == 3){
-                              alertify.warning("El R.U.C. pertenece a otro proveedor. Cambie por otro");
-                              $("#ruc").focus();
-                         }else if (resp == 4){
+                         if (resp == 4){
+                              alertify.warning("El C.I. pertenece a otro Empleado. Cambie por otro");
+                              $("#ci").focus();
+                         }else if (resp == 5){
                               alertify.alert("Modificar", "Registro actualizado con éxito",
                                    function(){
-                                        window.location="../forms/proveedor_lista.php";
+                                        window.location="../forms/empleados_lista.php";
                                    }
                               );
                          }

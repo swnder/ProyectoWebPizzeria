@@ -1,30 +1,3 @@
-<?php
-      require_once("./servicios/conexion.php");
-      $conex = conexion();
-      $sql = "SELECT * FROM usuario WHERE estado = 'activo'";
-      $res = mysqli_query($conex, $sql);
-      $reg = mysqli_fetch_array($res);
-
-      session_start();
-
-       // if(session_status()==PHP_SESSION_ACTIVE){
-       if(session_status()==PHP_SESSION_NONE){
-         // echo "hay una sesión";
-       }else{
-         // echo "no hay sessión";
-       }
-
-      if (isset($_POST['loginname'])){
-        echo "nada que mostraaaaaaaaarteee ksajdfñlkajsdñflkajsdfñlk";
-          // header("Location: ../forms/malaidea.php");
-        }else{
-
-          // echo "no existe";
-
-        }
- ?>
-
-
 <!DOCTYPE html>
 <html lang="es" dir="ltr">
      <head>
@@ -48,7 +21,6 @@
      </head>
      <body>
 
-
            <script>
               $(document).ready(function(){
                 <?php session_start(); ?>
@@ -62,6 +34,10 @@
                         // alertify.warning("Usuario logeado Exitosamente!!!");
                         //redirecciona a la pagina despues del login
                           window.location="./menuAdmin.php";
+                      }else if(usuNivel=="CAJERO"){
+                          window.location="./menuCajero.php";
+                      }else if(usuNivel=="CONTABILIDAD"){
+                        window.location="./menuConta.php";
                       }else{
                         window.location="./AccesoDenegado.php";
                       }

@@ -5,59 +5,46 @@
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta name="theme-color" content="black">
           <title>Compras</title>
-          <link rel="icon" href="../img/icono.png"/>
-          <link rel="stylesheet" href="../bt/bootstrap.min.css">
-          <link rel="stylesheet" href="../css/estilos.css">
-          <link rel="stylesheet" href="../dt/datatables.min.css">
-          <link rel="stylesheet" href="../alertify/alertify.min.css">
-          <link rel="stylesheet" href="../alertify/default.min.css">
-          <link rel="stylesheet" href="../font-awesome/font-awesome.min.css">
-          <script src="../js/jquery-3.3.1.min.js"></script>
-          <script src="../bt/bootstrap.min.js"></script>
-          <script src="../dt/datatables.min.js"></script>
-          <script src="../dt/botones/dataTables.buttons.min.js"></script>
-          <script src="../dt/botones/buttons.html5.min.js"></script>
-          <script src="../dt/botones/jszip.min.js"></script>
-          <script src="../dt/botones/buttons.print.min.js"></script>
-          <script src="../dt/botones/pdfmake.min.js"></script>
-          <script src="../dt/botones/vfs_fonts.js"></script>
-          <script src="../alertify/alertify.min.js"></script>
+          <link rel="icon" href="../img/pizzeria.ico"/>
+          <?php require_once "../plantilla/linktablas.php"; ?>
      </head>
-     <body class="bg-warning">
+     <body class="bg gris">
           <?php
-               session_start();
-                if (isset($_SESSION['nivelUsuario'])) {
-                    if ($_SESSION['nivelUsuario'] == "VENTA") {
-                       header("Location:../menuvende.php");
-                     }else {
-                       if ($_SESSION['nivelUsuario'] == "INVENTARIO") {
-                           header("Location:../menuinventa.php");
-                        }else{
-                          require_once("../menuadmin.php");
-                        }
-                     }
-                }else{
-                    header("Location:../denegado.php");
-                }
-                if($_SESSION["caja"]==""){
-                     echo '<script>
-                         alertify.alert("Atención", "Operación Denegada, debe seleccionar una Caja para realizar la Operación!",
-                              function(){
-                                   window.location="cajasAcciones_lista.php";
-                              }
-                         );
-                     </script>';
-                }
+               // session_start();
+               //  if (isset($_SESSION['nivelUsuario'])) {
+               //      if ($_SESSION['nivelUsuario'] == "VENTA") {
+               //         header("Location:../menuvende.php");
+               //       }else {
+               //         if ($_SESSION['nivelUsuario'] == "INVENTARIO") {
+               //             header("Location:../menuinventa.php");
+               //          }else{
+               //            require_once("../menuadmin.php");
+               //          }
+               //       }
+               //  }else{
+               //      header("Location:../denegado.php");
+               //  }
+               //  if($_SESSION["caja"]==""){
+               //       echo '<script>
+               //           alertify.alert("Atención", "Operación Denegada, debe seleccionar una Caja para realizar la Operación!",
+               //                function(){
+               //                     window.location="cajasAcciones_lista.php";
+               //                }
+               //           );
+               //       </script>';
+               //  }
            ?>
            <br><br><br>
-           <i class="fa fa-money" style="position:absolute;top:5px; right:17.5%;color:white;"></i><label style="position:absolute;top:0; right:11.5%;color:white;"><?php
-                if (isset($_SESSION['caja'])){
-                     echo " CAJA N°: ".$_SESSION['caja'];
-                     echo "<br>";
-                     echo " En CAJA: ".$_SESSION['montoOperaciones']." Gs.";
-                }
-           ?></label>
-          <div class="container">
+           <!-- <i class="fa fa-money" style="position:absolute;top:5px; right:17.5%;color:white;"></i><label style="position:absolute;top:0; right:11.5%;color:white;"> -->
+             <?php
+                // if (isset($_SESSION['caja'])){
+                //      echo " CAJA N°: ".$_SESSION['caja'];
+                //      echo "<br>";
+                //      echo " En CAJA: ".$_SESSION['montoOperaciones']." Gs.";
+                // }
+            ?>
+          <!-- </label> -->
+          <div class="container" >
                <div class="table-responsive">
                     <h2 class="text-center mt-3"><b>COMPRAS</b></h2><hr>
                     <table class="table table-bordered display nowrap stripe" id="tablaCompras" style="width:100%">

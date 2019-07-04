@@ -1,0 +1,6 @@
+user    pass
+-------------
+ADMIN	123
+JULIA	123
+PEDRITO	123
+SKULL	123

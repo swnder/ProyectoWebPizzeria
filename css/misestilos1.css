@@ -64,6 +64,9 @@ border-top: 1px solid #eee;
 #tabla{
   background: rgba(19, 154, 117, 0.89)!important;
 }
+#tab{
+  background: rgba(73, 120, 107, 0.89)!important;
+}
 
 body{
   background: url('../img/pizza2.jpg') no-repeat fixed center;
@@ -73,10 +76,24 @@ body{
 .btn:hover{
   background: rgba(86, 218, 182, 0.84)!important;
 }
+#ingresobody{
+  background: rgba(86, 218, 182, 0.84)!important;
+}
 #row{
   background: rgba(56, 89, 73, 0.59);
   text: white!important;
 }
+#row2{
+  background: rgba(180, 255, 219, 0.59);
+  text: white!important;
+}
 a:hover{
   background: rgba(56, 89, 73, 0.59)!important;
+}
+#encabezado{
+  background: rgba(5, 55, 60, 0.53);
+}
+#hora{
+    background: rgba(190, 214, 202, 0.14);
+    text: black;
 }

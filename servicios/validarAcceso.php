@@ -53,7 +53,7 @@ if ($nombre == null || $nombre == "") {
                 $idHistorial = $rows['idhistorial'];
             }
             $_SESSION["idHistorial"]  = $idHistorial;
-            
+
           }else {
                   $_SESSION["usuarioValido"] = "no"; //Usuario o contraseña no valido
           }

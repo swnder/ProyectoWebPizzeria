@@ -1,0 +1,143 @@
+/**
+* AUTOR: Lic. Juan B. Torres B. 
+* FECHA: Mayo de 2016
+*/
+.cabecera-tabla {
+	font-family: Arial;
+	font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+/*-----------------------------------------------------------------------*/
+.detalle-tabla {
+	font-family: Arial;
+	font-size: 14px;
+    color: black;
+}
+/*-----------------------------------------------------------------------*/
+/*Borde fino de color gris para todas las tablas*/
+#bordeFino {
+	border-collapse:collapse;
+	border:1px solid grey;
+	border-spacing: 0px;
+}
+#bordeColor {
+	border:1px solid grey
+}
+/*-----------------------------------------------------------------------*/
+.formato-texto-negrita {
+	font-family: Arial;
+	font-size: 14px;
+	font-weight: bold;
+    color: black;
+}
+/*-----------------------------------------------------------------------*/
+.formato-texto-normal {
+	font-family: Arial;
+	font-size: 14px;
+	font-weight: normal;
+    color: black;
+}
+/*-----------------------------------------------------------------------*/
+@font-face {
+   font-family: "HighNoon";
+   src: url("../fuentes/HighNoon.ttf") format("truetype");
+}
+/*-----------------------------------------------------------------------*/
+.titulo1{
+	font-family: "HighNoon";
+	font-size: 40px;
+    color: yellow;
+    text-shadow: -1px -1px 1px #000, 1px 1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+/*-----------------------------------------------------------------------*/
+#icono-cliente {
+	background-image: url(../img/cliente.png);
+}
+/*-----------------------------------------------------------------------*/
+#icono-articulo {
+	background-image: url(../img/articulo.png);
+}
+/*-----------------------------------------------------------------------*/
+#icono-agregar {
+	background-image: url(../img/agregar.png);
+}
+/*-----------------------------------------------------------------------*/
+#icono-guardar {
+	background-image: url(../img/guardar.png);
+}
+/*-----------------------------------------------------------------------*/
+#icono-cancelar {
+	background-image: url(../img/cancelar.png);
+}
+/*-----------------------------------------------------------------------*/
+input.botonGrande{
+	background-color: #32CD32;					/*color verde*/
+	background-repeat: no-repeat;
+	border: 2px solid white;
+	background-position: left center;			/*Posicion de la imagen*/
+	border: 1;
+	cursor: pointer;
+	height: 70px;
+	width: 200px;
+	padding-left: 55px;							/*Posicion del texto despues de la imagen*/
+	vertical-align: middle;
+	font: 11pt Tahoma;
+	border-radius: 5px;
+	color: black;
+}
+/*-----------------------------------------------------------------------*/
+button.botonGrandeVerde{
+	background-color: #32CD32;
+	background-repeat: no-repeat;
+	border: 2px solid white;
+	background-position: left center;			/*Posicion de la imagen*/
+	border: 1;
+	cursor: pointer;
+	height: 70px;
+	width: 150px;
+	padding-left: 58px;							/*Posicion del texto despues de la imagen*/
+	vertical-align: middle;
+	font: 11pt Tahoma;
+	border-radius: 5px;
+	color: black;
+}
+/*-----------------------------------------------------------------------*/
+button.botonGrandeRojo{
+	background-color: red;
+	background-repeat: no-repeat;
+	border: 2px solid white;
+	background-position: left center;			/*Posicion de la imagen*/
+	border: 1;
+	cursor: pointer;
+	height: 70px;
+	width: 150px;
+	padding-left: 58px;							/*Posicion del texto despues de la imagen*/
+	vertical-align: middle;
+	font: 11pt Tahoma;
+	border-radius: 5px;
+	color: black;
+}
+/*-----------------------------------------------------------------------*/
+.botonGrande:hover, .botonGrandeVerde:hover, .botonGrandeRojo:hover {
+	color:blue;
+	font: bold 11pt Tahoma;
+}
+/*-----------------------------------------------------------------------*/
+.alertify-log-custom {
+    background: blue;
+}
+/*-----------------------------------------------------------------------*/
+#tablatransparente {
+	border: 0px;
+}
+/*-----------------------------------------------------------------------*/
+
+
+
+
+
+

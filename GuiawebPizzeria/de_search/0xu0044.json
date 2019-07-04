@@ -1,0 +1,18 @@
+[
+	{ "s": "DATOS", "p": [16] },
+	{ "s": "DE", "p": [5, 8, 15, 13, 14, 11, 10, 9, 12, 6, 3, 2, 1] },
+	{ "s": "DEBE", "p": [4, 3] },
+	{ "s": "DEL", "p": [5] },
+	{ "s": "DEPENDIENDO", "p": [5] },
+	{ "s": "DESARROLLADORES", "p": [16, 5] },
+	{ "s": "DESCRIPCIONES", "p": [8] },
+	{ "s": "DESEA", "p": [3] },
+	{ "s": "DESPLIEGA", "p": [5] },
+	{ "s": "DESPLIEGAN", "p": [5] },
+	{ "s": "DETALLADA", "p": [15] },
+	{ "s": "DETALLES", "p": [6] },
+	{ "s": "DICHO", "p": [3] },
+	{ "s": "DISPONIBLES", "p": [5] },
+	{ "s": "DONDE", "p": [5, 16, 15] },
+	{ "s": "DOS", "p": [2] }
+]

@@ -2,7 +2,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3">© 2019 Copyright:
-    <a href=""> Sandro Castillo</a>
+    <a href=""> Trabajo Grupal <br> Programación Web <br> version 0.0.1</a>
   </div>
   <!-- Copyright -->
 

@@ -13,17 +13,19 @@
   </head>
   <body>
     <!-- cabecera -->
-    <?php require_once "../plantilla/cabecera.php"; ?>
+    <?php require_once "../plantilla/CabecerasSegunNivel.php"; ?>
       <?php
           session_start();
           if (isset($_SESSION["idUsuario"])){ //Solo para modificar
             require_once("../servicios/conexion.php");
             $conex = conexion();
             $id = $_SESSION["idUsuario"];
+            $cajero= $_SESSION["cajero"];
             $sql = "SELECT usuario FROM empleado WHERE usuario = '$id'";
             $res = mysqli_query($conex, $sql);
             $reg = mysqli_fetch_array($res);
           }
+
       ?>
     <div class="container gris">
          <h2 class="text-center mt-3 font-weight-bold" id="titulo"></h2>
@@ -40,7 +42,7 @@
                               <div class="col-12 col-md-4">
 
                                    <label class="font-weight-bold" for="monto">Nro.Caja</label>
-                                       <input type="number" class="form-control text-uppercase" name="nrocaja" id="nrocaja" placeholder="Caja Nro." maxlength="10" required min="1">
+                                       <input type="number" class="form-control text-uppercase" name="nrocaja" id="nrocaja" placeholder="Caja Nro." maxlength="10" required min="1" value="<?php echo isset($cajero) ? $cajero : '';?>">
                               </div>
                              <div class="col-12 col-md-4">
 
@@ -115,10 +117,16 @@
                     alertify.alert("Exito", "Carga Completada ",
                     function(){
                        alertify.success('Ok');
-                      window.location="../menuAdmin.php";
+                      window.location="Caja_lista.php";
                     });
                   }else if(resp==3){
                     alertify.success("Tembo la rejapova");
+                  }else if(resp==5){
+                    alertify.alert("Atención", "NO! puede cargar En esta Caja!",
+                    function(){
+                      alertify.error('Ok');
+                      window.location="Caja_lista.php";
+                    });
                   }
              }).fail( function(resp){ //se ejecuta en que caso de que haya ocurrido algún error
                   alertify.error(resp);

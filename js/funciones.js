@@ -20,10 +20,26 @@ jQuery(function($)){
                  },
 
          });
-}
+};
 
 
+function agregarDatos(codigo,descripcion,cantidad,precio){
+  codigo= "codigo"+descripcion="&descripcion"+cantidad="&cantidad"+precio="&precio",
+  $.ajax({
+    type:"POST",
+    url:"agregarDatos.php",
+    data:codigo,
+    success:function(r){
+      if (r==1) {
+        $('#tab').load('tabla.php');
+        alertify.success("agregado con exito");
+      }else {
+        alertify.error("Fallo del servidor");
+      }
+    }
 
+  });
+};
 
 
 

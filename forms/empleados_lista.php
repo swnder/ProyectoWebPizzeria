@@ -4,11 +4,12 @@
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta name="theme-color" content="black">
+          <link rel="icon" href="../img/pizzeria.ico"/>
           <title>EMPLEADOS</title>
           <?php require_once "../plantilla/linktablas.php";?>
      </head>
      <body >
-       <?php require_once "../plantilla/cabecera.php" ?>
+       <?php require_once "../plantilla/CabecerasSegunNivel.php"; ?>
          <div class="container mt-5" id="tabla" >
                <div class="table-responsive " >
                     <h2 class="text-center mt-3">EMPLEADOS</h2>
@@ -17,7 +18,7 @@
                               <tr>
                                    <th hidden>ID</th>
                                    <th>USUARIO</th>
-                                   <th>FOTO</th>
+                                   <!-- <th>FOTO</th> -->
                                    <th> C.I.</th>
                                    <th>NOMBRE y APELLIDO</th>
                                    <th>FECHA DE NAC.</th>
@@ -35,7 +36,7 @@
                               <?php
                                    require_once("../servicios/conexion.php");
                                    $conex = conexion();
-                                   $sql = "SELECT e.id, u.usuario, e.foto,e.ci, CONCAT(e.nombre,' ', e.apellido) as nombreyapellido, e.fechanaci,e.nacionalidad, c.ciudad, e.barrio,e.telefono, e.cargo,e.telefono,e.cargo,e.direccion
+                                   $sql = "SELECT e.id, u.usuario, e.ci, CONCAT(e.nombre,' ', e.apellido) as nombreyapellido, e.fechanaci,e.nacionalidad, c.ciudad, e.barrio,e.telefono, e.cargo,e.telefono,e.cargo,e.direccion
                                    FROM empleado e
                                    INNER JOIN usuario u ON u.id = e.usuario
                                    INNER JOIN ciudad c ON c.id = e.ciudad";
@@ -44,7 +45,7 @@
                                         echo "<tr>";
                                              echo "<td hidden>".$fila['id']."</td>";
                                              echo "<td>".$fila['usuario']."</td>";
-                                             echo "<td>".$fila['foto']."</td>";
+                                             // echo "<td>".$fila['foto']."</td>";
                                              echo "<td>".$fila['ci']."</td>";
                                              echo "<td>".$fila['nombreyapellido']."</td>";
                                              echo "<td>".$fila['fechanaci']."</td>";
@@ -216,14 +217,14 @@
                }
 
                function eliminar(id){
-                   alert("holi "+id);
+
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
                          url: "../servicios/EmpleadoServicios.php",
                          data: "id=" + id + "&accion=E",
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
-                         if (resp == 5){
+                         if (resp == 6){
                               alertify.alert("Atención", "El registro del  fue Eliminado",
                                    function(){
                                         location.reload();

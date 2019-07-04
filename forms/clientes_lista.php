@@ -5,26 +5,25 @@
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta name="theme-color" content="black">
           <title>Clientes</title>
-          <link rel="icon" href="../img/clientes.png"/>
-
+          <link rel="icon" href="../img/pizzeria.ico"/>
           <?php require_once "../plantilla/linktablas.php"; ?>
 
      </head>
-      <!-- cabecera -->
-    <?php  require_once "../plantilla/cabecera.php";?>
-     <body >
+     <body>
+       <!-- cabecera -->
 
-          <div class="container mt-5" id="tabla">
+       <?php require_once "../plantilla/CabecerasSegunNivel.php"; ?>
+          <div class="container gris mt-5">
                <div class="table-responsive">
-                    <h2 class="text-center mt-3">LISTA DE CLIENTES</h2>
-                    <table class="table table-bordered display nowrap stripe" id="tablaClientes" style="width:100%">
+                    <h2 class="text-center mt-3">CLIENTES</h2>
+                    <table class="table table-bordered display nowrap stripe" id="tablaproveedor" style="width:100%">
                          <thead>
                               <tr>
                                    <th hidden>ID</th>
                                    <th>R.U.C.</th>
                                    <th>NOMBRE</th>
                                    <th>TELÉFONO</th>
-                                   <th>DIRECCION</th>
+                                   <th>DIRECCIÓN</th>
                                    <th>EMAIL</th>
                                    <th>CIUDAD</th>
                                    <th>MODIFICAR</th>
@@ -35,9 +34,9 @@
                               <?php
                                    require_once("../servicios/conexion.php");
                                    $conex = conexion();
-                                   $sql ="SELECT cl.id,cl.ruc,cl.nombre,cl.telefono,cl.direccion,cl.email,c.ciudad FROM cliente cl JOIN ciudad c ON cl.ciudad=c.id ";
+                                   $sql = "SELECT c.id, c.ruc,c.nombre,c.telefono,c.direccion,c.email,ci.ciudad  FROM  cliente c JOIN ciudad ci ON c.ciudad=ci.id ";
                                    $rs = mysqli_query($conex, $sql);
-                                   foreach($rs as $fila){
+                                   foreach ($rs as $fila) {
                                         echo "<tr>";
                                              echo "<td hidden>".$fila['id']."</td>";
                                              echo "<td>".$fila['ruc']."</td>";
@@ -60,7 +59,7 @@
 
           <script>
                $(document).ready(function() {
-                    $('#tablaClientes').DataTable( {
+                    $('#tablaproveedor').DataTable( {
                          language: {
      					"emptyTable":			"No hay datos disponibles en la tabla.",
      					"info":		   		"Del _START_ al _END_ de _TOTAL_ ",
@@ -89,23 +88,73 @@
                          //dom: 'lBf',
                          dom: 'Bfrtip',
                          buttons: [
-                              'copyHtml5',
-                              'excelHtml5',
-                              'csvHtml5',
-                              'pdfHtml5',
-                              'print',
-                              {className:"btn gris",text: 'Nuevo', action: function (e, dt, node, config){
-                     		     window.location="clientes_am.php?accion=N";
-                      		}}
+
+
+                                   // 'pdfHtml5',
+                                   {
+                                        extend: "pdfHtml5",
+                                        name: "pdfBtn",
+                                        className:'btn gris',
+                                        text: "<i class='fa fa-file-pdf-o'> Exportar a PDF</i>",
+                                        titleAttr: 'pdf',
+                                        tittle: 'PDF-CLIENTES',
+                                        filename: 'Clientes-PDf',
+                                        orientation: 'landscape',
+                                        exportOptions: {
+                                             columns: [1,2,3,4,5,6]
+                                        },
+                                        customize: function(doc){
+
+                                             doc.content[1].table.widths=[
+                                                  '10%',
+                                                  '20%',
+                                                  '10%',
+                                                  '30%',
+                                                  '20%',
+                                                  '10%'
+                                             ],
+                                             doc['footer']= (function(page,pages){
+                                                  return {
+                                                       columns:[
+                                                            {
+                                                                 alignment:'center',
+                                                                 text: [
+                                                                      {text: page.toString(), italics: true}, ' de ',
+                                                                      {text: pages.toString(), italics: true}
+                                                                 ]
+                                                            }
+                                                       ],
+                                                       margin: [10, 0]
+                                                  }
+                                             });
+                                        }
+                                   },
+                                   // 'print',
+                                   {
+                                        extend: "print",
+                                        name: "printBtn",
+                                        className:'btn gris',
+                                        text: "<i class='fa fa-print' aria-hidden='true'> Imprimir</i>",
+                                        tittle: 'Lista de CLIENTES',
+                                        titleAttr: 'Imprimir',
+                                        orientation: 'landscape',
+                                        exportOptions: {
+                                             columns: [1,2,3,4,5,6]
+                                        }
+                                   },
+                                   {className:'btn gris',text: "<i class='fa fa-plus' aria-hidden='true'> Nuevo </i>", action: function (e, dt, node, config){
+                          		     window.location="clientes_am.php?accion=N";
+                           		}}
                          ]
                     } );
                } );
+
 
                function obtenerIdEli(){
                     //Capturar idCliente de la fila donde se hizo clic
                     var fi=0;
                     var id=0;
-                    var tabla = document.getElementById("tablaClientes");
+                    var tabla = document.getElementById("tablaproveedor");
                     var filas = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
                     for (i=0; i<filas.length; i++) {
                          filas[i].onclick = function() {
@@ -131,7 +180,7 @@
                     $.ajax({
                          type: "POST",
                          dataType: 'html',
-                         url: "../servicios/clientesServicios.php",
+                         url: "../servicios/clienteServicios.php",
                          data: "id=" + id + "&accion=E",
                     }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                          if (resp == 5){
@@ -149,7 +198,7 @@
                function obtenerIdModi(){
                     var fi=0;
                     var id=0;
-                    var tabla = document.getElementById("tablaClientes");
+                    var tabla = document.getElementById("tablaproveedor");
                     var filas = tabla.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
                     for (i=0; i<filas.length; i++) {
                          filas[i].onclick = function() {

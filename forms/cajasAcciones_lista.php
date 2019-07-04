@@ -5,7 +5,7 @@
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta name="theme-color" content="black">
           <title>Cajas</title>
-          <link rel="icon" href="../img/icono.png"/>
+          <link rel="icon" href="../img/pizzeria.png"/>
           <?php require_once "../plantilla/linktablas.php"; ?>
      </head>
      <body >
@@ -32,24 +32,34 @@
                     <table class="table table-bordered display nowrap stripe" id="tablaCajas" style="width:100%">
                          <thead>
                               <tr>
-                                   <th>ID CAJA</th>
+                                   <th hidden>ID CAJA</th>
                                    <th>N° CAJA</th>
-                                   <th>ESTADO</th>
-                                   <th>SELECCIONAR</th>
-                              </tr>
+                                   <th>ABRIO</th>
+                                   <th>FECHA APERTURA</th>
+                                   <th>MONTO</th>
+                                   <th>CERRO</th>
+                                   <th>FECHA CIERRE</th>
+                                   <th>MONTO</th>
+                                   </tr>
                          </thead>
                          <tbody>
                               <?php
                                    require_once("../servicios/conexion.php");
                                    $conex = conexion();
-                                   $sql = "SELECT * FROM caja ORDER BY nro_caja";
+                                   $sql = "SELECT c.id, c.nro_caja, e.nombre as abrio, c.fechaAper,c.Apertura, p.nombre as cerro, c.fechaCie, c.ciere FROM caja c LEFT JOIN empleado e ON c.idEmpleAper = e.id LEFT JOIN empleado p ON c.idEmpleCie = p.id ORDER BY nro_caja";
                                    $rs = mysqli_query($conex, $sql);
                                    foreach ($rs as $fila) {
                                         echo "<tr>";
-                                             echo "<td>".$fila['Caja']."</td>";
-                                             echo "<td>".$fila['Numero_caja']."</td>";
-                                             echo "<td>".$fila['Estado']."</td>";
-                                             echo "<td class='text-center' style='cursor:pointer'  onclick='mod();'><i class='fa fa-check'></i></td>";
+                                          echo "<td hidden>".$fila['id']."</td>";
+                                             echo "<td>".$fila['nro_caja']."</td>";
+
+                                             echo "<td>".$fila['abrio']."</td>";
+                                             echo "<td>".$fila['fechaAper']."</td>";
+                                             echo "<td>".$fila['Apertura']."</td>";
+                                             echo "<td>".$fila['e']."</td>";
+                                             echo "<td>".$fila['fechaCie']."</td>";
+                                             echo "<td>".$fila['cierre']."</td>";
+
                                         echo "</tr>";
                                    }
                                    cerrarBD($conex);

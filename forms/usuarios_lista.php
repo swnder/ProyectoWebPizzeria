@@ -11,7 +11,7 @@
      </head>
      <body >
      <!-- cabecera -->
-      <?php require_once "../plantilla/cabecera.php" ?>
+      <?php require_once "../plantilla/CabecerasSegunNivel.php"; ?>
 <!-- datatable -->
           <div class="container bg-dark mt-5" id="tabla">
                <div class="table-responsive">

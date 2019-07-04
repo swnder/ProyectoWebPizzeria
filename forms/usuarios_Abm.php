@@ -60,7 +60,8 @@
                          <option value="<?php echo isset($reg['nivel']) ? $reg['nivel'] : '';?>"><?php echo isset($reg['nivel']) ? $reg['nivel'] : 'NIVEL DE USUARIO';?></option>
 
                         <option value="ADMINISTRADOR">ADMINISTRADOR</option>
-                        <option value="USUARIO">USUARIO</option>
+                        <option value="USUARIO">CAJERO</option>
+                        <option value="USUARIO">CONTABILIDAD</option>
                      </select>
                                   </div>
 

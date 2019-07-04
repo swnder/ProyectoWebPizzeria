@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		
+		<title>Formulario de contacto Ajax </title>
+		
+		<link rel="shortcut icon" href="images/favicon.ico" />
+		
+		<!-- CSS style -->
+		<link rel="stylesheet" type="text/css" href="css/ajax-contact-form.css" />
+		
+		<!-- Font awesome -->
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />		
+		
+		<!-- jQuery -->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		
+		<!-- Ajax Contact Form JS -->
+		<script type="text/javascript" src="js/jquery.ajax-contact-form.js"></script>	
+	</head>
+	
+	<body>
+	
+		<!--
+		#########################################
+			- Ajax Contact Form / Start -
+		#########################################
+		-->
+		<div class="ajax-contact-form">
+			<div class="container">
+			
+				<!-- Title -->
+				<div class="title">
+					Formulario de contacto Ajax 
+
+					<span>Este formulario se puede integrar a las páginas <b>HTML</b> o <b>PHP</b> </span>
+				</div>
+				
+				<div class="form-holder">
+				
+					<!-- Notification -->
+					<div class="notification canhide">
+						<div class="wrapper">
+							<div class="inner"></div>
+						</div>
+					</div>	
+						
+					<!-- Form -->				
+					<form id="frm_contact" name="frm_contact" action="contact.php" method="post">
+						
+						<div class="field">
+							<label for="name">Nombre y Apellido  <span class="required">*</span></label>
+							<div class="inputs">
+								<input class="aweform" type="text" id="name" name="name" />
+							</div>  
+						</div>
+						
+						<div class="field">
+							<label for="email">E-mail<span class="required">*</span></label>
+							<div class="inputs">
+								<input class="aweform" type="text" id="email" name="email" />
+							</div>  
+						</div>
+						
+						<div class="field">
+							<label for="phone">Telefono <span class="required">*</span></label>
+							<div class="inputs">
+								<input class="aweform small" type="text" id="phone" name="phone" />
+							</div>  
+						</div>
+						
+						<div class="field">
+							<label for="subject">Tema</label>
+							<div class="inputs">
+								<select class="aweform" id="subject" name="subject">
+									<option value="General">General</option>
+									<option value="Sales Department">Departamento de ventas</option>
+									<option value="Report an Issue">Reportar un problema</option>
+								</select>
+							</div>  
+						</div>
+						
+						<div class="field">
+							<label for="message">Mensaje <span class="required">*</span></label>
+							<div class="inputs">
+								<textarea class="aweform" id="message" name="message" rows="30" cols="5"></textarea>
+							</div>  
+						</div>
+						
+						<div class="field">
+							<label for="verify">Eres humano? <span class="required">*</span></label>
+							<div class="inputs">
+								<div class="captcha">
+									<img src="tools/captcha/captcha.php" class="captcha-img" alt="Verification" width="200" height="70" />
+									<i class="fa fa-refresh change-captcha" title="Change Text"></i>
+									<br /><input class="aweform captcha autocomplete-off" type="text" id="verify" name="verify" />
+								</div>								
+							</div>  
+						</div>
+						
+						<div class="form-submit">
+							<button type="submit" id="submit" name="submit"><i class="fa fa-chevron-circle-right"></i> Enviar</button>   
+						</div>
+						
+					</form>
+					
+				</div>
+				
+			</div>
+		</div>
+		<!--
+		#########################################
+			- Ajax Contact Form / End -
+		#########################################
+		-->
+			
+	</body>
+	
+</html>

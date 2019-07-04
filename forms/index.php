@@ -14,7 +14,7 @@
   </head>
   <body>
 
-    <?php require_once "../plantilla/cabecera.php"; ?>
+    <?php require_once "../plantilla/CabecerasSegunNivel.php"; ?>
 <br><br><br><br>
 
 

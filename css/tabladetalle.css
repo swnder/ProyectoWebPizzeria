@@ -1,0 +1,55 @@
+/**
+* AUTOR: Lic. Juan B. Torres B. 
+* FECHA: Mayo de 2016
+*/
+#table-scroll {			/*Tamaño de la tabla*/
+	width: 1040px;
+	height: 230px;
+	overflow: auto;
+	margin: 0 auto;		/*Centra horizontalmente el div*/
+}
+
+table, td, th {			/*Color de los bordes de la tabla*/
+	border: rgba(193, 193, 193, 0.48) 1px solid;
+}
+
+#fixedY{
+	position: relative;
+	top: 0;
+	z-index: 99;
+	background-color: red;
+}
+
+
+#fixedY table{
+	border-collapse: collapse;
+	width: 1020px;
+}
+
+#fixedY table th { 			/*Color de fondo y fuente de la cabecera*/
+	background-color: red;
+	font: bold 15px Tahoma, Geneva, sans-serif;
+	color: rgb(255, 255, 255);
+}
+
+#cuerpoDatos {
+	width: 1020px;
+	overflow: hidden; 
+}
+
+#cuerpoDatos > div{
+	float: left;
+}
+
+#cuerpoDatos > div#fixedX table{
+	border-collapse: collapse;
+}
+
+
+#cuerpoDatos > div#nofixedX{
+	width: 1020px;
+}
+
+#cuerpoDatos > div#nofixedX table{
+	border-collapse: collapse;
+}

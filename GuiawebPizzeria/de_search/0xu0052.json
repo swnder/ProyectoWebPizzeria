@@ -1,0 +1,12 @@
+[
+	{ "s": "REALIZADAS", "p": [5, 7, 6] },
+	{ "s": "REALIZADOS", "p": [15, 5] },
+	{ "s": "REALIZAN", "p": [5] },
+	{ "s": "REALIZAR", "p": [5, 13, 12, 11, 10, 9, 6] },
+	{ "s": "REGISTRADOS", "p": [15] },
+	{ "s": "REGISTRAR", "p": [15, 5] },
+	{ "s": "REGISTRO", "p": [13, 12, 11, 10, 9] },
+	{ "s": "REGISTROS", "p": [9, 11, 10, 13, 12] },
+	{ "s": "REMITIDO", "p": [16] },
+	{ "s": "RESPECTIVAS", "p": [8] }
+]

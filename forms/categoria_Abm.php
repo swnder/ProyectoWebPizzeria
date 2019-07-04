@@ -104,7 +104,7 @@
                         data: datos,
                    }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
                         if (resp == 1){
-                             alertify.warning("La Mesa ya existe. Cambie por otro");
+                             alertify.warning("La Ubicación ya existe. Cambie por otro");
                              $("#ubi").focus();
                         }else if (resp == 2){
                              alertify.success("Registro guardado con éxito");

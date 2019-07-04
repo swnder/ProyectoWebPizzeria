@@ -4,70 +4,54 @@
           <meta charset="utf-8">
           <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
           <meta name="theme-color" content="black">
-          <link rel="icon" href="../img/icono.png"/>
-          <link rel="stylesheet" href="../bt/bootstrap.min.css">
-          <link rel="stylesheet" href="../dt/datatables.min.css">
-          <link rel="stylesheet" href="../alertify/alertify.min.css">
-          <link rel="stylesheet" href="../alertify/default.min.css">
-          <link rel="stylesheet" href="../css/estilos.css">
-          <link rel="stylesheet" href="../font-awesome/font-awesome.min.css">
-
-          <script src="../js/jquery-3.3.1.min.js"></script>
-          <script src="../bt/bootstrap.min.js"></script>
-          <script src="../dt/datatables.min.js"></script>
-          <script src="../dt/botones/dataTables.buttons.min.js"></script>
-          <script src="../dt/botones/buttons.html5.min.js"></script>
-          <script src="../dt/botones/jszip.min.js"></script>
-          <script src="../dt/botones/buttons.print.min.js"></script>
-          <script src="../dt/botones/pdfmake.min.js"></script>
-          <script src="../dt/botones/vfs_fonts.js"></script>
-          <script src="../alertify/alertify.min.js"></script>
+          <link rel="icon" href="../img/pizzeria.ico"/>
+          <?php require_once "../plantilla/linktablas.php"; ?>
           <?php
-              if(!isset($_SESSION)){
-                   session_start();
-               }
-               if (!isset($_GET["accion"]) || !isset($_SESSION['nivelUsuario'])){
-                    header("Location: /BodegaPremium/denegado.php");
-               }else {
-
-                    if ($_SESSION['nivelUsuario'] == "VENTA") {
-                       header("Location:../menuvende.php");
-                     }else if($_SESSION['nivelUsuario']== "INVENTARIO"){
-                         header("Location:../menuinventa.php");
-                    }else {
-                         require_once("../menuadmin.php");
-                    }
-               }
-               if(!isset($_SESSION["caja"])){
-                    header("Location:../denegado.php");
-               }
-               if ($_GET['accion']=="N") {
-                    require_once("../servicios/conexion.php");
-          		$conex = conexion();
-                    $sql = "SELECT MAX(Id_cabecera) maxi FROM compra_cabecera";
-                    $res = mysqli_query($conex, $sql);
-     			$reg = mysqli_fetch_array($res);
-                    $max=$reg['maxi'];
-                    if($max == null){
-                         $reg['Id_cabecera'] = 1;
-                    }else{
-                         $reg['Id_cabecera'] = $max+1;
-                    }
-                    $sql = "SELECT MAX(Numero_factura) maxN FROM compra_cabecera";
-                    $res = mysqli_query($conex, $sql);
-     			$reg = mysqli_fetch_array($res);
-                    $max2=$reg['maxN'];
-                    if($max2 == null){
-                         $reg['Numero_factura'] = 1;
-                    }else{
-                         $reg['Numero_factura'] = $max2+1;
-                    }
-               }
+          //     if(!isset($_SESSION)){
+          //          session_start();
+          //      }
+          //      if (!isset($_GET["accion"]) || !isset($_SESSION['nivelUsuario'])){
+          //           header("Location: /BodegaPremium/denegado.php");
+          //      }else {
+          //
+          //           if ($_SESSION['nivelUsuario'] == "VENTA") {
+          //              header("Location:../menuvende.php");
+          //            }else if($_SESSION['nivelUsuario']== "INVENTARIO"){
+          //                header("Location:../menuinventa.php");
+          //           }else {
+          //                require_once("../menuadmin.php");
+          //           }
+          //      }
+          //      if(!isset($_SESSION["caja"])){
+          //           header("Location:../denegado.php");
+          //      }
+          //      if ($_GET['accion']=="N") {
+          //           require_once("../servicios/conexion.php");
+          // 		$conex = conexion();
+          //           $sql = "SELECT MAX(Id_cabecera) maxi FROM compra_cabecera";
+          //           $res = mysqli_query($conex, $sql);
+     			// $reg = mysqli_fetch_array($res);
+          //           $max=$reg['maxi'];
+          //           if($max == null){
+          //                $reg['Id_cabecera'] = 1;
+          //           }else{
+          //                $reg['Id_cabecera'] = $max+1;
+          //           }
+          //           $sql = "SELECT MAX(Numero_factura) maxN FROM compra_cabecera";
+          //           $res = mysqli_query($conex, $sql);
+     			// $reg = mysqli_fetch_array($res);
+          //           $max2=$reg['maxN'];
+          //           if($max2 == null){
+          //                $reg['Numero_factura'] = 1;
+          //           }else{
+          //                $reg['Numero_factura'] = $max2+1;
+          //           }
+          //      }
           ?>
      </head>
-     <body class="bg-warning">
+     <body class="bg gris">
 
-          <div class="">
+          <div class="container " >
 
                <form id="form_marcas">
 
@@ -255,6 +239,7 @@
           </form>
 
           </div>
+
           <script>
                //document.getElementById('accion').value = 'N';
                document.getElementById('titulo').innerHTML = 'COMPRAS';
@@ -497,45 +482,6 @@
                     t.row($(bot).parents('tr')).remove().draw();
 
                }
-               // function registrar(){
-               //      id = $("#cabecera").val();
-               //      nro = $("#factura").val();
-               //      fec = $("#fecha").val();
-               //      ruc = $("#iruc").val();
-               //      var elements = document.getElementsByName('estado');
-               //      for (i=0;i<elements.length;i++) {
-               //        if(elements[i].checked == true) {
-               //             est = document.getElementsByName("estado")[i].value;
-               //        }
-               //      }
-               //      var elements = document.getElementsByName('condicion');
-               //      for (i=0;i<elements.length;i++) {
-               //        if(elements[i].checked == true) {
-               //             con = document.getElementsByName("condicion")[i].value;
-               //        }
-               //      }
-               //      acc = $("#accion").val();
-               //      $.ajax({
-               //           type: "POST",
-               //           dataType: 'html',
-               //           url: "../servicios/compra_cab_Servicios.php",
-               //           data: "id=" + id + "&fecha=" + fec + "&estado=" + est +"&condicion=" + con +"&factura=" + nro +"&ruc=" + ruc +"&accion=" + acc,
-               //      }).done( function(resp){ //se ejecuta cuando la solicitud Ajax ha concluido satisfactoriamente
-               //           if (resp == 1){
-               //                alertify.warning("Ya existe un registro con el Número Factura y Fecha ingresada. Cambie por otro");
-               //                $("#factura").focus();
-               //           }else if (resp == 2) {
-               //                alertify.success("Registro guardado con éxito");
-               //                limpiarCampos();
-               //                can = parseInt(document.getElementById("cabecera").value,10);
-               //                document.getElementById("cabecera").value = can + 1;
-               //                $("#factura").focus();
-               //
-               //           }
-               //      }).fail( function(resp){ //se ejecuta en que caso de que haya ocurrido algún error
-               //           alertify.error(resp);
-               //      });
-               // }
 
                function limpiarCampos(){
                     $("#fecha").val("");
